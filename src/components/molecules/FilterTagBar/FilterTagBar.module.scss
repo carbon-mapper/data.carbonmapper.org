@@ -1,0 +1,38 @@
+@import 'mixins';
+
+.container {
+    @include breakpoint(desktop) {
+        @include flex(row, flex-start, center);
+        gap: vw(4);
+    }
+}
+
+.wrapper {
+    @include breakpoint(desktop) {
+        @include flex(row, flex-start, center);
+        max-width: vw(358);
+        height: 100%;
+        gap: vw(4);
+    }
+
+    :global {
+        .isHidden {
+            display: none;
+        }
+    }
+}
+
+.button {
+    color: var(--color-grey);
+    background-color: var(--color-grey-bright);
+
+    :global(.is-accessibility) & {
+        background-color: transparent;
+    }
+
+    @include breakpoint(desktop) {
+        @include font-size(12, 1);
+        width: vw(22);
+        padding: vw(6);
+    }
+}

@@ -1,0 +1,109 @@
+@import 'mixins';
+@import 'helpers';
+@import 'variables/sizes';
+@import 'variables/zindex';
+@import 'variables/easings';
+
+$size-filters-padding-x: 20;
+
+.filters {
+    @include z-index(filters, $dashboard-elements);
+    @include flex(column, flex-start, flex-start);
+    position: absolute;
+    inset: vw($size-dashboard-header-height) 0 auto vw($size-dashboard-spacing);
+    width: fit-content;
+    height: 100%;
+    width: vw($size-dashboard-livesearch-width);
+    pointer-events: none;
+    overflow: hidden;
+    // opacity: 0;
+    transition: opacity var(--transition-fast);
+
+    @include breakpoint(desktop) {
+        padding-bottom: vw(60 + $size-dashboard-header-height);
+    }
+
+    // &:global {
+    //     &.is-visible {
+    //         opacity: 1;
+    //     }
+    // }
+}
+
+.inner {
+    @include flex(column, flex-start, flex-start);
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    position: relative;
+    pointer-events: auto;
+}
+
+.views {
+    width: 100%;
+    flex: 1;
+    position: relative;
+}
+
+.view {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+
+    &:global {
+        &:not(.is-main) {
+            left: 100%;
+        }
+    }
+}
+
+.viewInner {
+    @include flex(column, flex-start, flex-start);
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.submit {
+    @include flex(row, space-between, flex-end);
+    width: 100%;
+
+    @include breakpoint(desktop) {
+        padding-top: vw(13);
+        padding-bottom: vw(13);
+    }
+}
+
+.closer {
+    width: 100%;
+    height: vw($size-dashboard-gap);
+    pointer-events: auto;
+    background-color: transparent;
+
+    @include focus {
+        position: relative;
+        outline: none;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            width: -webkit-fill-available;
+            height: 100%;
+            border: 2px solid var(--color-yellow-a11y);
+            z-index: 1;
+        }
+    }
+}
+
+.closerWrapper {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: fit-content;
+    background-color: var(--color-white-blur);
+}

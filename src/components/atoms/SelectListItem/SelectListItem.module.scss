@@ -1,0 +1,88 @@
+@import "mixins";
+
+.wrapper {
+    position: relative;
+
+
+    &:not(:last-of-type) {
+        border-bottom: var(--border-bright);
+    }
+
+    :global {
+
+        input {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0;
+            cursor: pointer;
+
+            &:checked + label {
+                color: var(--color-accent-blue);
+
+
+                .select-checkmark {
+                    opacity: 1;
+                }
+
+                .select-circle {
+                    stroke: none;
+                }
+            }
+
+            &:not(:checked) + label {
+
+                .select-circle {
+                    fill: none;
+                }
+            }
+
+            @include focus {
+                + label {
+                    .select-circle {
+                        stroke: var(--color-yellow-a11y);
+                        stroke-width: 2px;
+                    }
+                }
+            }
+        }
+    }
+
+    &:global {
+
+        &.is-svg-select-line {
+
+            svg {
+
+                .select-line {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+.label {
+    @include flex(row, flex-start, center);
+    font-weight: 700;
+
+    :global {
+
+        .select-line {
+            opacity: 0;
+        }
+
+        .select-checkmark {
+            opacity: 0;
+        }
+    }
+
+    @include breakpoint(desktop) {
+        @include font-size(15, 1);
+        padding: vw(8) 0;
+        gap: vw(6);
+    }
+
+}

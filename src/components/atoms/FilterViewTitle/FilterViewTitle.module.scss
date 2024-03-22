@@ -1,0 +1,84 @@
+@import 'mixins';
+
+.wrapper {
+    @include flex(row, center, center);
+    position: relative;
+    border-bottom: var(--border-bright);
+
+    @include breakpoint(desktop) {
+        padding: vw(14);
+    }
+}
+
+.back {
+    @include flex(row, flex-start, center);
+    color: var(--color-grey-french);
+    font-weight: 400;
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: fit-content;
+    height: fit-content;
+    margin-top: auto;
+    margin-bottom: auto;
+    transition: color var(--transition-fast);
+
+    @include hover {
+        color: var(--color-blue);
+    }
+
+    @include breakpoint(desktop) {
+        @include font-size(12, 1);
+        gap: vw(2);
+        margin-left: vw(14);
+
+        svg {
+            transform: rotate(180deg);
+            transform-origin: center;
+
+            path {
+                stroke: currentColor;
+            }
+        }
+    }
+}
+
+.title {
+    color: var(--color-black);
+    font-weight: 700;
+
+    @include breakpoint(desktop) {
+        @include font-size(15, 1);
+    }
+}
+
+.clear {
+    @include flex(row, flex-start, center);
+    color: var(--color-grey-french);
+    font-weight: 400;
+    position: absolute;
+    inset: 0 0 0 auto;
+    width: fit-content;
+    height: fit-content;
+    margin-top: auto;
+    margin-bottom: auto;
+    transition: color var(--transition-fast);
+
+    @include hover {
+        color: var(--color-blue);
+    }
+
+    @include breakpoint(desktop) {
+        @include font-size(12, 1);
+        gap: vw(2);
+        margin-right: vw(14);
+
+        svg {
+            transform: rotate(180deg);
+            transform-origin: center;
+
+            path {
+                stroke: currentColor;
+            }
+        }
+    }
+}

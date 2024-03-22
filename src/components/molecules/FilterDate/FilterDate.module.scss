@@ -1,0 +1,25 @@
+@import "mixins";
+
+.wrapper {
+    @include flex(row, space-between, center);
+    width: 100%;
+
+    @include breakpoint(desktop) {
+        gap: vw(16);
+    }
+}
+
+.item {
+    flex: 1;
+}
+
+.separator {
+    background-color: var(--color-grey-french);
+    height: 1px;
+    position: relative;
+
+    @include breakpoint(desktop) {
+        width: vw(15);
+        top: vw(6);
+    }
+}

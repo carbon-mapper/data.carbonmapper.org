@@ -1,0 +1,40 @@
+@import 'mixins';
+
+.container {
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        'header'
+        'main'
+        'footer';
+}
+
+.main {
+    grid-area: main;
+    justify-self: center;
+    @include flex(column, flex-start, center);
+
+
+
+    button + button {
+        margin-left: 1em;
+    }
+
+    p {
+        @include font-size(13, 1.4);
+        align-self: flex-start;
+
+        & + button {
+            margin-top: 2em;
+        }
+
+        strong {
+            font-weight: 400;
+        }
+    }
+}
+
+.footer {
+    grid-area: footer;
+}

@@ -1,0 +1,29 @@
+@import 'mixins';
+@import 'variables/easings';
+
+.wrapper {
+    @include flex(row, flex-start, center);
+
+    button {
+        font-family: var(--font-primary);
+        font-weight: 500;
+        color: var(--color-black);
+        width: 100%;
+        text-align: left;
+        transition: color 0.4s $ease-custom;
+    }
+
+    @include breakpoint(desktop) {
+        button {
+            @include font-size(14, 16);
+            padding: vw(14 * 0.3) vw(12);
+        }
+    }
+
+    @include hover {
+        button {
+            // background-color: var(--color-accent-blue);
+            color: var(--color-accent-blue);
+        }
+    }
+}

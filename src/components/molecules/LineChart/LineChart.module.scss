@@ -1,0 +1,66 @@
+@import 'mixins';
+
+.container {
+    background-color: white;
+    font-weight: 400;
+    width: 100%;
+
+    @include breakpoint(desktop) {
+        --font-size: #{vw(10)};
+        height: vw(140);
+        margin-bottom: 0.5em;
+    }
+
+    svg {
+        pointer-events: all;
+        overflow: visible;
+    }
+
+    :global {
+        .data-curve {
+            path.data-curve {
+                stroke: var(--color-accent-violet);
+                stroke-width: 1;
+                fill: none;
+            }
+        }
+
+        .data-points {
+            circle.data-point {
+                fill: var(--color-accent-violet);
+
+                &.null {
+                    fill: none;
+                    stroke: var(--color-grey-medium);
+                }
+            }
+        }
+
+        .x-axis {
+            line.line-bottom {
+                stroke: var(--color-grey-light);
+                stroke-width: 2;
+            }
+
+            .label text {
+                font-size: var(--font-size);
+                text-anchor: middle;
+                fill: var(--color-grey-medium);
+                transform: translateY(calc(var(--font-size) * 1.5));
+            }
+        }
+
+        .y-axis .label {
+            line.grid-line {
+                stroke: var(--color-grey-light);
+                stroke-width: 1;
+            }
+
+            text {
+                font-size: var(--font-size);
+                text-anchor: end;
+                fill: var(--color-grey-medium);
+            }
+        }
+    }
+}

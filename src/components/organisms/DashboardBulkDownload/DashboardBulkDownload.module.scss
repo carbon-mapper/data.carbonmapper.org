@@ -1,0 +1,23 @@
+@import 'mixins';
+@import 'variables/sizes';
+@import 'variables/zindex';
+@import 'helpers';
+
+.wrapper {
+    @include z-index(modal, $panel-elements);
+}
+
+.modal {
+    width: vw($size-dashboard-filters-width);
+    max-height: vw($size-dashboard-left-panel-max-height);
+    margin-left: calc(vw($size-dashboard-spacing) + vw(20));
+    margin-right: auto;
+    margin-top: vw(90);
+    margin-bottom: auto;
+    overflow: scroll;
+    @extend %no-scrollbar;
+}
+
+.info p {
+    max-width: 30ch;
+}

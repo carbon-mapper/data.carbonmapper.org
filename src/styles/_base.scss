@@ -1,0 +1,261 @@
+@import 'mixins';
+@import 'variables/sizes';
+@import 'variables/times';
+@import 'variables/zindex';
+
+:root {
+    // sizes
+    --app-height: 100vh;
+    --blur: #{vw($blur)};
+    --border-radius: #{vw($border-radius)};
+    // colors
+    --color-bg: #{$color-white};
+    --color-text: #{$color-black};
+
+    --color-accent-blue: #{$color-blue};
+    --color-accent-violet: #{$color-violet};
+    --color-accent-hotpink: #{$color-hotpink};
+    --color-accent-violet-light: #{$color-violet-light};
+
+    --color-white: #{$color-white};
+    --color-white-smoke: #{$color-white-smoke};
+    --color-white-alpha: #{$color-white-alpha};
+    --color-white-alpha-low: #{$color-white-alpha-low};
+    --color-white-alpha-high: #{$color-white-alpha-high};
+    --color-white-blur: #{$color-white-blur};
+
+    --color-black: #{$color-black};
+
+    --color-grey: #{$color-grey};
+    --color-grey-bright: #{$color-grey-bright};
+    --color-grey-light: #{$color-grey-light};
+    --color-grey-medium: #{$color-grey-medium};
+    --color-grey-alpha: #{$color-grey-alpha};
+    --color-grey-french: #{$color-grey-french};
+    --color-grey-french-alpha: #{$color-grey-french-alpha};
+    --color-grey-french-active: #{$color-grey-french-active};
+
+    --color-orange: #{$color-orange};
+    --color-red: #{$color-red};
+    --color-green: #{$color-green};
+    --color-blue: #{$color-blue};
+    --color-blue-dark: #{$color-blue-dark};
+
+    --color-blue-a11y: #{$color-blue-a11y};
+    --color-yellow-a11y: #{$color-yellow-a11y};
+
+    // borders
+    --border-text: 1px solid var(--color-text);
+    --border-active: 1px solid var(--color-accent-blue);
+    --border-hover: 1px solid var(--color-blue-dark);
+    --border-error: 1px solid var(--color-red);
+    --border-bright: 1px solid var(--color-grey-bright);
+    --border-light: 1px solid var(--color-grey-light);
+    --border-medium: 1px solid var(--color-grey-medium);
+
+    // gradients
+    --gradient-violet-orange: #{$gradient-violet-orange};
+
+    // transitions
+    --transition: #{$time $ease-custom};
+    --transition-fast: #{$time-fast $ease-custom};
+    --transition-fast-delay: #{$time-fast $ease-custom $time-fast};
+
+    // sizes
+    --size-spacing-s: #{vw($size-spacing-s)};
+    --size-spacing-sm: #{vw($size-spacing-sm)};
+    --size-spacing-m: #{vw($size-spacing-m)};
+    --size-spacing-l: #{vw($size-spacing-l)};
+    --size-button: #{vw($size-button)};
+    --size-dashboard-filters-width: #{vw($size-dashboard-filters-width)};
+
+    // font sizes for ui scaling
+    @include breakpoint(phone) {
+        font-size: vw(16, phone);
+
+        @media (min-width: 500px) {
+            font-size: vw(12, phone);
+        }
+    }
+
+    @include breakpoint(tablet) {
+        font-size: vw(16, tablet);
+    }
+
+    @include breakpoint(desktop) {
+        font-size: vw(16);
+    }
+
+    @include breakpoint(hd) {
+        font-size: vw(18);
+    }
+
+    @include breakpoint(fhd) {
+        font-size: vw(18);
+    }
+
+    @include breakpoint(wqhd) {
+        font-size: vw(27);
+    }
+
+    @include breakpoint(ultra-hd) {
+        font-size: vw(33);
+    }
+
+    @include breakpoint(desktop-short) {
+        font-size: vw(14);
+    }
+}
+
+html,
+body {
+    font-family: var(--font-primary);
+    font-weight: 400;
+}
+
+body {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    color: var(--color-text);
+
+    // layout debug
+    // & * {
+    // outline: 1px solid rgba(255, 0, 183, 0.289) !important;
+    // }
+
+    &.is-coverage,
+    &.is-overlay {
+        --color-white-blur: #{$color-white-blur-medium};
+    }
+
+    &.is-satellite {
+        --color-white-blur: #{$color-white-blur-high};
+    }
+
+    &.is-accessibility {
+        --color-blue: #{$color-blue-a11y};
+        --color-accent-blue: #{$color-blue-a11y};
+        --color-white-alpha: #{$color-white};
+        --color-white-alpha-low: #{$color-white};
+        --color-white-alpha-high: #{$color-white};
+        --color-red: #{$color-red-a11y};
+        --color-white-blur: #{$color-white};
+        --color-grey: #{$color-grey-a11y};
+        --color-grey-medium: #{$color-grey-a11y};
+        --color-grey-light: #{$color-grey-a11y};
+        --color-grey-bright: #{$color-grey-a11y};
+        --color-grey-french: #{$color-grey-a11y};
+        --color-white-smoke: #{$color-grey-a11y};
+
+        label:focus,
+        button:focus,
+        a:focus {
+            color: black;
+            outline: 2px solid var(--color-yellow-a11y);
+            z-index: 1000;
+        }
+
+        canvas:focus {
+            color: black;
+            outline: 2px solid var(--color-yellow-a11y);
+        }
+    }
+}
+
+#main {
+    @include z-index(page);
+    position: relative;
+    opacity: 0;
+    pointer-events: none;
+
+    body.is-loaded & {
+        opacity: 1;
+    }
+}
+
+#root {
+    font-family: var(--font-primary);
+    font-weight: 400;
+}
+
+#modals,
+#popups {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    // opacity: 0;
+}
+
+#modals {
+    // @include z-index(modals);
+    z-index: 5;
+    padding: var(--size-spacing-l);
+}
+
+#popups {
+    z-index: 5;
+    // @include z-index(popups);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    // font-family: var(--font-secondary);
+    font-weight: 700;
+}
+
+label {
+    cursor: pointer;
+}
+
+button,
+.tooltip-trigger {
+    .tooltip {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity var(--transition-fast), transform var(--transition-fast);
+    }
+
+    &:hover {
+        .tooltip {
+            opacity: 1;
+            pointer-events: all;
+            transition: opacity var(--transition-fast-delay), transform var(--transition-fast-delay);
+        }
+    }
+}
+
+body.is-accessibility {
+    button,
+    .tooltip-trigger {
+        &:focus {
+            .tooltip {
+                opacity: 1;
+                pointer-events: all;
+            }
+        }
+    }
+}
+
+.page-404 {
+    height: 100vh;
+    letter-spacing: vw(-0.01);
+    @include flex(column);
+    gap: 1em;
+    text-align: center;
+    pointer-events: all;
+
+    h1 {
+        @include font-size(21, 25);
+        font-weight: 700;
+    }
+
+    a {
+        @include font-size(12, 13);
+        font-weight: 400;
+    }
+}

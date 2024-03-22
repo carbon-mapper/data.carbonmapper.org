@@ -1,0 +1,30 @@
+@import 'mixins';
+
+.button {
+    --color: var(--color-accent-blue);
+    background-color: var(--color-white-alpha);
+    @include flex;
+
+    @include breakpoint(desktop) {
+        backdrop-filter: blur(var(--blur));
+        padding: vw(6) vw(10);
+    }
+
+    @include hover {
+        .text {
+            color: var(--color-blue-dark);
+        }
+    }
+}
+
+.text {
+    @include font-size(11, 1);
+    font-weight: 500;
+    color: var(--color);
+    letter-spacing: vw(0.01);
+    transition: color var(--transition-fast);
+}
+
+.isBlack {
+    --color: var(--color-black);
+}

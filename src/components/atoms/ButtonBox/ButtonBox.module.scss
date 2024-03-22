@@ -1,0 +1,146 @@
+@import 'mixins';
+@import 'variables/easings';
+
+.button {
+    background-color: var(--color-accent-blue);
+    color: var(--color-white);
+    text-align: center;
+    font-weight: 700;
+    position: relative;
+    backdrop-filter: blur(20px);
+    transition: color var(--transition-fast), background-color var(--transition-fast);
+    @include font-size(18, 1);
+    padding: vw(12) vw(16);
+    letter-spacing: 0.013px;
+    border-radius: vw($border-radius);
+
+    @include hover {
+        background-color: var(--color-blue-dark);
+    }
+}
+
+.stack-child {
+    @include font-size(12, 1);
+    font-weight: 500;
+    height: vw($size-button-small);
+    padding: vw(7) vw(9);
+    @include flex;
+}
+
+.small {
+    @include font-size(12, 1);
+    font-weight: 400;
+    height: vw($size-button-small);
+    padding: vw(7) vw(9);
+    @include flex;
+}
+
+
+.tiny {
+    padding: vw(12) vw(16);
+    @include font-size(12, 1);
+    font-weight: 400;
+}
+
+.outline {
+    padding: vw(9);
+    color: var(--color-accent-blue);
+    background-color: transparent;
+    border: 1px solid var(--color-accent-blue);
+    border-radius: 2px;
+    transition: color var(--transition-fast), background-color var(--transition-fast);
+    transition-timing-function: $ease-custom;
+    @include font-size(12, 1);
+
+    @include hover {
+        background-color: var(--color-blue);
+        color: var(--color-white);
+    }
+}
+
+.user {
+    --border: var(--border-light);
+    --color: var(--color-grey);
+
+    width: vw(20);
+    height: vw(20);
+    padding: 0;
+    background-color: transparent;
+    border: var(--border);
+    border-radius: 2px;
+    color: var(--color);
+    transition: color var(--transition-fast), border-color var(--transition-fast);
+    transition-timing-function: $ease-custom;
+    @include font-size(12, 1);
+
+    svg path {
+        stroke: currentColor;
+    }
+
+    @include hover {
+        --color: var(--color-accent-blue);
+        --border: var(--border-active);
+        background-color: transparent;
+    }
+}
+
+.transparent {
+    background-color: var(--color-white-blur);
+    backdrop-filter: blur(vw(10));
+    color: var(--color-black);
+
+    @include hover {
+        background-color: var(--color-white);
+    }
+}
+
+.details {
+    padding: vw(6) vw(9);
+    @include font-size(12, 1);
+    font-weight: 700;
+
+    @include hover {
+        background-color: var(--color-blue-dark);
+    }
+}
+
+.details.outline {
+    color: var(--color-accent-blue);
+
+    @include hover {
+        background-color: var(--color-blue);
+        color: var(--color-white);
+    }
+}
+
+.icon {
+    @include flex;
+    gap: 0.25em;
+    font-weight: 500;
+}
+
+.disabled {
+    background-color: var(--color-grey-french-alpha);
+    color: var(--color-grey-bright);
+    pointer-events: none;
+
+    &.outline {
+        background-color: inherit;
+        color: var(--color-grey-medium);
+        border: var(--border-medium);
+    }
+}
+
+.success {
+    background-color: var(--color-green);
+    color: var(--color-grey-bright);
+    pointer-events: none;
+}
+
+.filled {
+    background-color: var(--color-blue-a11y);
+
+    @include hover {
+        background-color: var(--color-blue-dark);
+    }
+}

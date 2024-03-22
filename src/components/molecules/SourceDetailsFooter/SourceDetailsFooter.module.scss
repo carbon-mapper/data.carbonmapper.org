@@ -1,0 +1,10 @@
+.container {
+    padding: var(--padding);
+    background-color: var(--color-white-blur);
+    display: flex;
+    gap: 0.33em;
+}
+
+.right {
+    margin-left: auto;
+}

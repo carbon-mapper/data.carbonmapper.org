@@ -1,0 +1,49 @@
+@import 'mixins';
+@import 'variables/zindex';
+
+.header {
+    @include z-index(header, $dashboard-elements);
+    width: 100%;
+    background-color: var(--color-bg);
+    border-radius: var(--border-radius) var(--border-radius) 0 var(--border-radius);
+    position: relative;
+    pointer-events: auto;
+
+    @include breakpoint(desktop) {
+        --filters-width: #{vw($size-dashboard-header-filters-width)};
+        --gap-width: #{vw($size-dashboard-header-gap-width)};
+        --tags-width: #{vw($size-dashboard-header-tags-width)};
+        --counter-width: #{vw($size-dashboard-header-counter-width)};
+        --logo-width: #{vw($size-dashboard-header-logo-width)};
+
+        height: vw($size-dashboard-header-height);
+        display: grid;
+        grid-template-rows: 100%;
+        grid-template-columns:
+            var(--filters-width) var(--gap-width) var(--tags-width) auto var(--counter-width)
+            fit-content(var(--logo-width));
+        grid-template-areas: 'filters . tags . counter logo';
+        align-items: center;
+    }
+
+    :global {
+        @include breakpoint(desktop) {
+            .filters {
+                grid-area: filters;
+            }
+
+            .tags {
+                grid-area: tags;
+            }
+
+            .counter {
+                grid-area: counter;
+            }
+
+            .logo {
+                grid-area: logo;
+                border-left: 1px solid var(--color-grey-bright);
+            }
+        }
+    }
+}

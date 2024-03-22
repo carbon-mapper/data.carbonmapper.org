@@ -1,0 +1,292 @@
+@import 'mixins';
+
+.svg-accessibility {
+    width: vw(18);
+
+    path {
+        stroke: var(--color-black);
+        transition: stroke var(--transition-fast);
+
+        .is-accessibility & {
+            stroke: var(--color-white);
+        }
+    }
+
+    circle {
+        fill: var(--color-black);
+        transition: fill var(--transition-fast);
+
+        .is-accessibility & {
+            fill: var(--color-white);
+        }
+    }
+}
+
+.svg-attention {
+    width: vw(16);
+}
+
+.svg-bell {
+    width: vw(24);
+    // TODO: remove this when the bell icon is updated
+    margin-top: vw(2);
+}
+
+.svg-download {
+    width: vw(18);
+}
+
+.svg-calendar {
+    width: vw(25);
+}
+
+.svg-checkbox {
+    width: vw(17);
+
+    path {
+        stroke: var(--color-blue);
+    }
+}
+
+.svg-checkmark-rounded {
+    width: vw(24);
+}
+
+.svg-checkmark {
+    width: vw(20);
+}
+
+.svg-chevron {
+    width: vw(24);
+    path {
+        transition: stroke var(--transition-fast);
+    }
+}
+
+.svg-chevron-down {
+    width: vw(10);
+    transform: rotate(0deg);
+    transition: transform var(--transition-fast);
+}
+
+.svg-circle {
+    width: vw(32);
+}
+
+.svg-cog {
+    width: vw(18);
+    transform: rotate(0deg);
+    transition: transform var(--transition-fast);
+}
+
+.svg-closer {
+    width: vw(10);
+    transform: rotate(0deg);
+    transition: transform var(--transition-fast);
+}
+
+.svg-closer-medium {
+    width: vw(20);
+    transform: rotate(0deg);
+    transition: transform var(--transition-fast);
+}
+
+.svg-closer-big {
+    width: vw(20);
+    transform: rotate(0deg);
+    transition: transform var(--transition-fast);
+}
+
+.svg-closer-outline {
+    width: vw(32);
+    height: vw(16);
+
+    path {
+        transform-origin: 50% 50%;
+        transform: rotate(0deg);
+        transition: transform var(--transition-fast);
+    }
+}
+
+.svg-copy {
+    width: vw(9);
+}
+
+.svg-crosshair {
+    width: vw(24);
+}
+
+.svg-delete {
+    --color: #0b0b0b;
+    width: vw(20);
+}
+
+.svg-download {
+    width: vw(18);
+}
+
+.svg-dropdown-arrow {
+    width: vw(18);
+}
+
+.svg-edit {
+    width: vw(20);
+}
+
+.svg-experimental {
+    width: vw(96);
+}
+
+.svg-eye {
+    width: vw(20);
+}
+
+.svg-flag {
+    width: vw(24);
+}
+
+.svg-folder {
+    width: vw(24);
+}
+
+.svg-globe {
+    width: vw(24);
+}
+
+.svg-hyperlink {
+    width: vw(10);
+}
+
+.svg-info {
+    width: vw(12);
+}
+
+.svg-info-big {
+    width: vw(36);
+}
+
+.svg-layers {
+    width: vw(24);
+}
+
+.svg-label-phme {
+    width: vw(64);
+}
+
+.svg-legend-gradient,
+.svg-legend-gradient-co2 {
+    width: vw(6);
+    height: vw(102);
+}
+
+.svg-location-pin {
+    width: vw(20);
+}
+
+.svg-list {
+    width: vw(24);
+}
+
+.svg-logo {
+    @each $bp in phone, desktop, tablet {
+        @include breakpoint($bp) {
+            width: vw(94, $bp);
+        }
+    }
+}
+
+.svg-loupe {
+    width: vw(24);
+}
+
+.svg-loupe-back {
+    width: vw(16);
+}
+
+.svg-measure {
+    width: vw(24);
+}
+
+.svg-menu {
+    width: vw(24);
+}
+
+.svg-minus {
+    width: vw(24);
+}
+
+.svg-more {
+    width: vw(12);
+}
+
+.svg-more {
+    width: vw(12);
+}
+
+.svg-play {
+    width: vw(18);
+}
+
+.svg-plume-origin {
+    width: vw(20);
+}
+
+.svg-plus {
+    width: vw(24);
+}
+
+.svg-polygon {
+    width: vw(32);
+}
+
+.svg-question-mark {
+    width: vw(18);
+
+    path {
+        transition: fill var(--transition-fast);
+    }
+}
+
+.svg-select {
+    width: vw(24);
+
+    path {
+        fill: var(--color-blue);
+    }
+}
+
+.svg-shape {
+    width: vw(24);
+
+    path,
+    rect {
+        stroke: var(--color-accent-blue);
+    }
+}
+
+.svg-source,
+.svg-source-co2 {
+    width: vw(20);
+}
+
+.svg-square {
+    width: vw(32);
+}
+
+.svg-stats {
+    width: vw(18);
+}
+
+.svg-triangle {
+    transform: rotate(0deg);
+    transition: transform var(--transition-fast);
+    width: vw(11);
+}
+
+.svg-upload {
+    width: vw(32);
+}
+
+.svg-user {
+    width: vw(24);
+}

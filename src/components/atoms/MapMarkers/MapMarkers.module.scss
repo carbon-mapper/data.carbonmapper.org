@@ -1,0 +1,235 @@
+@import 'mixins';
+@import 'variables/easings';
+
+// marker
+
+.source {
+    @include flex;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: opacity 750ms linear;
+    box-sizing: border-box;
+    width: vw(20);
+    height: vw(20);
+    background-color: var(--color-bg);
+
+    // enlarge the clickable area
+    &::before {
+        content: '';
+        position: absolute;
+        inset: vw(-6);
+    }
+
+    // add violet ring
+    &::after {
+        content: '';
+        position: absolute;
+        inset: vw(3);
+        border-radius: 50%;
+        border: vw(4) solid var(--color-accent-violet);
+    }
+
+    &.co2::after {
+        border-color: var(--color-accent-hotpink);
+    }
+
+    @include hover {
+        :global(.tooltip.hover-type) {
+            opacity: 1;
+            pointer-events: all;
+        }
+    }
+}
+
+/*
+ * Cluster Marker
+ */
+
+.cluster {
+    @include flex;
+    border-radius: 50%;
+    --ch4: 50;
+    --co2: 50;
+}
+
+.small {
+    width: vw(40);
+    height: vw(40);
+}
+
+.medium {
+    width: vw(45);
+    height: vw(45);
+}
+
+.large {
+    width: vw(50);
+    height: vw(50);
+}
+
+.huge {
+    width: vw(60);
+    height: vw(60);
+}
+
+.blur {
+    @include full;
+    background-color: var(--color-grey-light);
+    border-radius: 50%;
+    opacity: 0.5;
+}
+
+.color {
+    margin: vw(7.5);
+    @include full;
+    @include flex;
+    z-index: 1;
+    border-radius: 50%;
+    transition: background 2000ms ease-in-out;
+    background-color: var(--color-accent-violet);
+}
+
+.text {
+    font-weight: 500;
+    color: var(--color-white);
+    z-index: 2;
+
+    @include breakpoint(desktop) {
+        @include font-size(10, 1);
+        letter-spacing: vw(0.01);
+    }
+}
+
+/*
+ * Source Marker
+ */
+
+%source-marker-base {
+    --color: var(--color-accent-violet);
+
+    &.co2 {
+        --color: var(--color-accent-hotpink);
+    }
+
+    @include flex;
+    width: vw(20);
+    height: vw(20);
+    border-radius: 50%;
+}
+
+// .source {
+//     @extend %source-marker-base;
+//     background-color: var(--color-bg);
+//     transition: opacity 750ms linear;
+//     cursor: pointer;
+
+//     // enlarge the clickable area
+//     &::before {
+//         content: '';
+//         position: absolute;
+//         inset: vw(-6);
+//     }
+
+//     // add violet ring
+//     &::after {
+//         content: '';
+//         position: absolute;
+//         inset: vw(3);
+//         border: vw(4) solid var(--color);
+//         border-radius: 50%;
+//     }
+
+//     &.is-loading {
+//         cursor: wait;
+//         opacity: 0.3;
+//     }
+
+//     @include hover {
+//         :global(.tooltip.hover-type) {
+//             opacity: 1;
+//             pointer-events: all;
+//         }
+//     }
+// }
+
+/*
+ * Active Source Marker
+ */
+
+.active {
+    @extend %source-marker-base;
+    pointer-events: none;
+    display: none;
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: vw(-6);
+        border-width: vw(3);
+        border-radius: 50%;
+        border-style: solid;
+        border-top-color: var(--color);
+        border-right-color: var(--color-white);
+        border-bottom-color: var(--color);
+        border-left-color: var(--color-white);
+        animation: spin 5s linear infinite;
+    }
+
+    &.is-active {
+        display: block;
+    }
+}
+
+/*
+ * Plume Origin Marker
+ */
+
+.plume {
+    --color: var(--color-orange);
+
+    &.co2 {
+        --color: var(--color-accent-violet);
+    }
+
+    width: vw(20);
+    height: vw(20);
+    position: relative;
+    pointer-events: none;
+    display: none;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        width: vw(3);
+        height: vw(3);
+        border-radius: 50%;
+        background: var(--color);
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: calc(100% - #{vw(6)});
+        height: calc(100% - #{vw(6)});
+        border-radius: 50%;
+        border: vw(3) solid var(--color);
+    }
+
+    &.is-active {
+        display: block;
+    }
+}

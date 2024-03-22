@@ -1,0 +1,11 @@
+@import "mixins";
+@import "variables/sizes";
+@import "variables/easings";
+
+.logo {
+    @include flex(row, center, center);
+    position: relative;
+    width: fit-content;
+    height: 100%;
+    padding: vw(8) vw(16);
+}

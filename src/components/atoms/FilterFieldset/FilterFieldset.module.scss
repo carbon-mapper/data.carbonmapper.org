@@ -1,0 +1,14 @@
+@import 'mixins';
+
+.fieldset {
+    display: inline-block;
+    width: 100%;
+
+    &.small {
+        width: 50%;
+    }
+
+    & + &:not(.small) {
+        margin-top: vw(26);
+    }
+}

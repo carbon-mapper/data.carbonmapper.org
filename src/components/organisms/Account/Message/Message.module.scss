@@ -1,0 +1,23 @@
+@import 'mixins';
+
+.container {
+    height: 100%;
+}
+
+.wrapper {
+    @include flex(column);
+    gap: 1em;
+}
+
+.text {
+    @include font-size(16, 21);
+    font-weight: 400;
+    text-align: center;
+    max-width: 26ch;
+    @include flex(column);
+
+    button {
+        display: block;
+        margin-top: 1.25em;
+    }
+}

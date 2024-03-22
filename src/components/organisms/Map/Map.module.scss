@@ -1,0 +1,48 @@
+@import 'mixins';
+
+.container {
+    @include z-index(map);
+    @include full;
+    pointer-events: all;
+
+    :global {
+        .mapboxgl-marker {
+            z-index: 3;
+            pointer-events: none !important;
+        }
+
+        .marker-container {
+            pointer-events: all !important;
+            @include flex;
+            display: inline-block;
+            cursor: crosshair;
+            z-index: 1;
+
+            @include hover {
+                z-index: 2;
+            }
+        }
+    }
+}
+
+.wrapper {
+    @include full;
+}
+
+.map {
+    @include full;
+}
+
+.message {
+    @include flex;
+    position: fixed;
+    z-index: 1;
+    inset: 0;
+    pointer-events: none;
+
+    p {
+        padding: 1em 2em;
+        background-color: var(--color-white-alpha);
+        backdrop-filter: blur(--blur);
+    }
+}

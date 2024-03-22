@@ -1,0 +1,46 @@
+@import 'mixins';
+
+$font-weights: 400, 500, 600, 700;
+
+@each $wgt in $font-weights {
+    .is-#{$wgt}-wgt {
+        font-weight: $wgt;
+    }
+}
+
+.sr-only {
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: none;
+}
+
+.scrollbar-hidden {
+    scrollbar-width: none;
+
+    &::-moz-scrollbar {
+        display: none;
+    }
+
+    &::-webkit-scrollbar {
+        width: 0;
+        display: none;
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: transparent;
+    }
+}
+
+%no-scrollbar {
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}

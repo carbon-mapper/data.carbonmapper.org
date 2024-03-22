@@ -1,0 +1,36 @@
+@import "mixins";
+@import "variables/sizes";
+
+$grid-columns: (
+	phone: 4,
+	tablet: 8,
+	desktop: 12,
+	hd: 12
+);
+
+$grid-gap: (
+	phone: vw(20, phone),
+	tablet: vw(32, tablet),
+	desktop: vw(56),
+	hd: vw(56)
+);
+
+.grid {
+	width: 100%;
+	height: fit-content;
+	display: grid;
+
+	@each $bp, $value in $grid-gap {
+
+		@include breakpoint($bp) {
+			column-gap: vw($value);
+		}
+	}
+
+	@each $bp, $columns in $grid-columns {
+
+		@include breakpoint($bp) {
+			grid-template-columns: repeat($columns, 1fr);
+		}
+	}
+}

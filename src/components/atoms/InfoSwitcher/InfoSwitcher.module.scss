@@ -1,0 +1,51 @@
+@import "mixins";
+
+.wrapper {
+    @include flex(row, flex-start, center);
+    // todo fix ?
+    // width: 400px;
+    z-index: 10000;
+    position: relative;
+    pointer-events: auto;
+
+    @include breakpoint(desktop) {
+        gap: vw(15);
+    }
+}
+
+.text {
+    font-weight: 400;
+    color: var(--color-grey);
+    visibility: hidden;
+
+    @include breakpoint(desktop) {
+        @include font-size(10, 11);
+        padding-right: vw(16);
+    }
+
+    &:global {
+
+        &.is-visible {
+            visibility: visible;
+        }
+    }
+}
+
+.button {
+    border: 1px solid var(--color-grey);
+    transition: background-color var(--transition-fast),border-color var(--transition-fast);
+
+    @include breakpoint(desktop) {
+        width: vw(36);
+        min-width: vw(36);
+        height: vw(36);
+        border-radius: var(--border-radius);
+    }
+
+    @include hover {
+        background-color: var(--color-blue);
+        border-color: var(--color-blue);
+
+        :global svg path {fill: var(--color-white);}
+    }
+}

@@ -1,0 +1,128 @@
+@import 'mixins';
+@import 'variables/easings';
+@import 'variables/zindex';
+
+.item {
+    position: absolute;
+    width: fit-content;
+    height: fit-content;
+    pointer-events: auto;
+    transition: opacity 0.25s $ease-custom, right 600ms $ease-custom;
+    will-change: opacity, right;
+
+    &.noTransition {
+        transition: none;
+    }
+
+    // backdrop blur for all buttons
+    backdrop-filter: blur(var(--blur));
+
+    &:global {
+        &[class*='is-top'] {
+            @include z-index(button-top, $panel-elements);
+        }
+
+        &[class^='is-bottom'] {
+            @include z-index(button-bottom, $panel-elements);
+        }
+
+        &.is-left {
+            @include z-index(button-center, $panel-elements);
+        }
+
+        &.is-top-left {
+            inset: var(--size-spacing-sm) auto auto 0;
+        }
+
+        &.is-top {
+            inset: 0 0 auto 0;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        &.is-top-right {
+            inset: var(--size-spacing-sm) 0 auto auto;
+        }
+
+        &.is-right {
+            inset: 0 0 0 auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            @include z-index(right-items, $dashboard-elements);
+        }
+
+        &.is-bottom-left {
+            inset: auto auto vw(40) 0;
+        }
+
+        &.is-bottom-right {
+            inset: auto 0 vw(40 - $size-dashboard-gap) auto;
+        }
+
+        &.is-bottom {
+            inset: auto 0 vw(20) * -1 0;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        &.is-left {
+            inset: 0 auto 0 0;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+        &.is-left,
+        &.is-right {
+            @include breakpoint(desktop) {
+                bottom: vw($size-dashboard-header-height + $size-dashboard-gap + 55);
+            }
+        }
+    }
+
+    &.isHidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    &.isOffset {
+        @include breakpoint(desktop) {
+            right: vw($size-dashboard-details-view-width + 7);
+        }
+    }
+}
+
+.inner {
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+
+    &:global {
+        &.is-row {
+            display: flex;
+        }
+
+        &.is-column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        &.is-left,
+        &.is-right {
+            @include breakpoint(desktop) {
+                bottom: vw($size-dashboard-header-height + $size-dashboard-gap);
+            }
+        }
+
+        &.is-gap-small {
+            @include breakpoint(desktop) {
+                gap: vw(1);
+            }
+        }
+
+        &.is-gap-big {
+            @include breakpoint(desktop) {
+                gap: vw(6);
+            }
+        }
+    }
+}

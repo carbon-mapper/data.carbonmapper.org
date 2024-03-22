@@ -1,0 +1,26 @@
+.tabs {
+    grid-area: tabs;
+    height: fit-content;
+    margin-top: -0.5em;
+    position: relative;
+    pointer-events: none;
+
+    :global button {
+        pointer-events: all;
+    }
+
+    &::before {
+        content: '';
+        height: 1px;
+        inset: auto 0 0;
+        position: absolute;
+        width: 100%;
+        background-color: var(--color-grey-light);
+    }
+
+    button {
+        &:first-of-type {
+            width: 13ch;
+        }
+    }
+}

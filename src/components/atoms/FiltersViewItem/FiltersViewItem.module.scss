@@ -1,0 +1,50 @@
+@import 'mixins';
+
+.wrapper {
+    width: 100%;
+    padding-left: vw($size-filters-padding-x);
+    padding-right: vw($size-filters-padding-x);
+    position: relative;
+    z-index: 0;
+
+    &:global {
+        &.is-livesearch {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        &.is-top {
+            padding-top: vw(20);
+            padding-bottom: vw(30);
+        }
+
+        &.is-main {
+            padding-top: vw(20);
+            padding-bottom: vw(20);
+        }
+
+        &.is-bottom {
+            @include flex(row, space-between, flex-end);
+            width: 100%;
+            padding-top: vw(13);
+            padding-bottom: vw(13);
+
+            .blurred-bg {
+                border-radius: 0 0 vw($border-radius) vw($border-radius);
+            }
+        }
+
+        &.is-fill {
+            flex: 1;
+        }
+
+        &.is-white {
+            background-color: var(--color-white);
+        }
+
+        &.no-padding {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+}

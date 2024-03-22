@@ -1,0 +1,152 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-118.38986729999986, 34.24689647999994]
+            },
+            "properties": {
+                "cluster_id": 0,
+                "gas": "CH4",
+                "sector": "1A1",
+                "plume_count": 10,
+                "plume_ids": [
+                    "ang20170907t215503-B",
+                    "ang20200716t202023-1",
+                    "ang20200720t193827-A",
+                    "ang20200807t215721-1",
+                    "ang20200814t184059-1",
+                    "ang20200825t214130-A",
+                    "ang20200906t193950-A",
+                    "ang20200906t213220-A",
+                    "ang20200919t180703-A",
+                    "ang20200919t181112-A"
+                ],
+                "emission_auto": 117.73146849146517,
+                "emission_uncertainty_auto": 45.78985460340414,
+                "published_at_max": "2023-02-14",
+                "published_at_min": "2022-11-15",
+                "timestamp_max": "2020-09-19",
+                "timestamp_min": "2017-09-07",
+                "date_count": 8,
+                "persistence": 0.34782608695652173,
+                "source_name": "CH4_1A1_100m_-118.38987_34.24690"
+            },
+            "id": 111,
+            "bbox": [-118.39005, 34.246824, -118.38976, 34.247035]
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-87.19929599999999, 33.40310749999998]
+            },
+            "properties": {
+                "cluster_id": 0,
+                "gas": "CH4",
+                "sector": "1B1a",
+                "plume_count": 4,
+                "plume_ids": [
+                    "GAO20220419t161635p0000-A",
+                    "GAO20220422t155137p0000-A",
+                    "GAO20220423t173858p0000-A",
+                    "GAO20220923t170108p0000-A"
+                ],
+                "emission_auto": 5016.185370608932,
+                "emission_uncertainty_auto": 2120.772739744145,
+                "published_at_max": "2022-12-06",
+                "published_at_min": "2022-11-10",
+                "timestamp_max": "2022-09-23",
+                "timestamp_min": "2022-04-19",
+                "date_count": 4,
+                "persistence": 0.5714285714285714,
+                "source_name": "CH4_1B1a_100m_-87.19930_33.40311"
+            },
+            "id": 222,
+            "bbox": [-87.199424, 33.402986, -87.199193, 33.4032]
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-119.56973219999976, 35.29317149200009]
+            },
+            "properties": {
+                "cluster_id": 0,
+                "gas": "CH4",
+                "sector": "1B2",
+                "plume_count": 5,
+                "plume_ids": [
+                    "ang20170909t180622-A",
+                    "ang20170909t181441-A",
+                    "ang20170926t225148-A",
+                    "ang20171010t213926-A",
+                    "ang20171010t214752-A"
+                ],
+                "emission_auto": 225.3619031640981,
+                "emission_uncertainty_auto": 102.43469125563041,
+                "published_at_max": "2023-03-20",
+                "published_at_min": "2023-03-20",
+                "timestamp_max": "2017-10-10",
+                "timestamp_min": "2017-09-09",
+                "date_count": 3,
+                "persistence": 0.08108108108108109,
+                "source_name": "CH4_1B2_100m_-119.56973_35.29317"
+            },
+            "id": 333,
+            "bbox": [-119.569781, 35.293125, -119.56972, 35.29335746]
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-119.50944666666662, 36.03051123333332]
+            },
+            "properties": {
+                "cluster_id": 0,
+                "gas": "CH4",
+                "sector": "4B",
+                "plume_count": 3,
+                "plume_ids": ["ang20200724t204341-1", "ang20200804t204511-1", "ang20200806t202154-1"],
+                "emission_auto": 127.06835570324161,
+                "emission_uncertainty_auto": 53.479662579729855,
+                "published_at_max": "2022-11-15",
+                "published_at_min": "2022-11-15",
+                "timestamp_max": "2020-08-06",
+                "timestamp_min": "2020-07-24",
+                "date_count": 3,
+                "persistence": 0.14285714285714285,
+                "source_name": "CH4_4B_100m_-119.50945_36.03051"
+            },
+            "id": 444,
+            "bbox": [-119.50965, 36.0301528, -119.50917, 36.0310957]
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-84.03746633333331, 34.135403000000004]
+            },
+            "properties": {
+                "cluster_id": 0,
+                "gas": "CH4",
+                "sector": "6A",
+                "plume_count": 3,
+                "plume_ids": ["GAO20220423t150922p0000-B", "GAO20220425t151201p0000-A", "GAO20220425t151656p0000-B"],
+                "emission_auto": 1590.6858050599633,
+                "emission_uncertainty_auto": 894.7077955829562,
+                "published_at_max": "2022-11-11",
+                "published_at_min": "2022-11-10",
+                "timestamp_max": "2022-04-25",
+                "timestamp_min": "2022-04-23",
+                "date_count": 2,
+                "persistence": 0.2222222222222222,
+                "source_name": "CH4_6A_100m_-84.03747_34.13540"
+            },
+            "id": 555,
+            "bbox": [-84.037699, 34.135219, -84.03704, 34.135555]
+        }
+    ]
+}

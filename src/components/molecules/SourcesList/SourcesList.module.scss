@@ -1,0 +1,36 @@
+@import 'mixins';
+@import 'helpers';
+
+.wrapper {
+    width: 100%;
+    position: relative;
+    background-color: var(--color-white-blur);
+    flex: 1;
+    will-change: backdrop-filter;
+    padding: vw($size-dashboard-sources-padding);
+    border-radius: 0 0 vw($border-radius) vw($border-radius);
+    overflow-y: scroll;
+    @extend %no-scrollbar;
+    pointer-events: all;
+}
+
+.list {
+    @include flex(column, flex-start, flex-start);
+    gap: vw($size-dashboard-sources-padding);
+
+    li,
+    div {
+        width: 100%;
+    }
+
+    :global(.skeleton) {
+        & + :global(.skeleton) {
+            margin-top: vw($size-dashboard-sources-padding);
+        }
+    }
+}
+
+.empty {
+    max-width: 20ch;
+    margin: auto;
+}

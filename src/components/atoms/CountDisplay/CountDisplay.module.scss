@@ -1,0 +1,52 @@
+@import 'mixins';
+
+.container {
+    text-align: center;
+}
+
+.count {
+    @include font-size(24, 1);
+    letter-spacing: vw(-0.5);
+    transition: opacity 150ms linear;
+
+    span {
+        font-weight: 700;
+    }
+
+    sub {
+        margin-left: 0.33em;
+        font-size: 0.5em;
+        font-weight: 400;
+        vertical-align: baseline;
+    }
+
+    .is-loading & {
+        opacity: 0.3;
+    }
+}
+
+.label {
+    @include flex;
+    @include font-size(11, 1);
+    font-weight: 400;
+    color: var(--color-grey);
+    margin-top: 0.5em;
+
+    &.big {
+        @include font-size(12, 1);
+        color: var(--color-text);
+    }
+}
+
+.emission {
+    grid-area: emission;
+    align-self: center;
+}
+
+.plumes {
+    grid-area: plumes;
+}
+
+.persistent {
+    grid-area: persistent;
+}

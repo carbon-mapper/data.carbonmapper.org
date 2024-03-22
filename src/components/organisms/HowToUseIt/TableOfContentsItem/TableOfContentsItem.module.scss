@@ -1,0 +1,35 @@
+@import 'mixins';
+
+.item {
+    --color: var(--color-grey);
+    --border: var(--border-light);
+
+    @include font-size(14, 1);
+    font-weight: 400;
+    text-align-last: left;
+    color: var(--color);
+    list-style: none;
+    border-bottom: var(--border);
+    transition: color var(--transition-fast), border-bottom var(--transition-fast);
+
+    button {
+        display: inline-block;
+        width: 100%;
+        padding: 0.7em 0 0.6em;
+    }
+
+    &.active {
+        --color: var(--color-text);
+        font-weight: 700;
+
+        pointer-events: none;
+
+        button {
+            cursor: default;
+        }
+    }
+
+    &:hover {
+        --color: var(--color-accent-blue);
+    }
+}

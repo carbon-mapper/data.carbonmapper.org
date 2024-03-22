@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+        "target": "es2015",
+        "lib": ["dom", "dom.iterable", "esnext"],
+        "allowJs": true,
+        "skipLibCheck": true,
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "noEmit": true,
+        "esModuleInterop": true,
+        "module": "esnext",
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "jsx": "preserve",
+        "incremental": true,
+        "paths": {
+            "@/*": ["./src/*"]
+        },
+        "types": ["cypress", "@testing-library/cypress"]
+    },
+    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+    "exclude": [
+        "node_modules",
+        "./cypress.config.ts",
+        //other exclusions that may help [with jest/cypress type conflicts] https://github.com/cypress-io/cypress/issues/22059#issuecomment-1428298264
+        "cypress",
+        "**/*.cy.tsx"
+    ]
+}

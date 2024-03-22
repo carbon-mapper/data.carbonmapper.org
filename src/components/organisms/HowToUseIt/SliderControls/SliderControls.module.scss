@@ -1,0 +1,25 @@
+@import 'mixins';
+
+.controls {
+    grid-area: controls;
+    @include flex(row, space-between, center);
+    gap: 1em;
+}
+
+.pagination {
+    @include flex;
+    gap: 0.6em;
+}
+
+.dot {
+    --color: var(--color-grey-light);
+
+    width: 0.4rem;
+    height: 0.4rem;
+    background-color: var(--color);
+    border-radius: 50%;
+
+    &.active {
+        --color: var(--color-accent-blue);
+    }
+}

@@ -1,0 +1,65 @@
+@import 'mixins';
+@import 'variables/sizes';
+@import 'variables/zindex';
+
+.panel {
+    @include z-index(panel, $dashboard-elements);
+    display: flex;
+    flex: 1;
+    width: 100%;
+    position: relative;
+    pointer-events: none;
+}
+
+.segment {
+    width: 50%;
+    height: 100%;
+    position: relative;
+    transition: transform var(--transition);
+    pointer-events: none;
+
+    &:global {
+        &.is-offset {
+            transform: translateX(vw($size-dashboard-details-view-width + 7) * -1);
+        }
+    }
+}
+
+.fixedHeight {
+    min-height: vw(32);
+}
+
+.attribution {
+    background-color: var(--color-white-blur);
+    min-height: vw(20);
+    padding-left: vw(6);
+    padding-right: 0;
+}
+
+.wrapper {
+    @include flex(row, flex-start, center);
+    position: relative;
+    width: fit-content;
+    gap: 1px;
+
+    a,
+    button {
+        @include hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.text {
+    background-color: var(--color-white-blur);
+    padding: 0.5em;
+    font-family: var(--font-primary);
+    @include font-size(12, 13);
+    font-weight: 400;
+    color: var(--color-black);
+    @include flex;
+
+    :global .svg-hyperlink {
+        margin-left: 0.25em;
+    }
+}

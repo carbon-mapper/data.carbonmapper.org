@@ -1,0 +1,20 @@
+@import "mixins";
+@import "variables/sizes";
+@import "variables/colors";
+
+.module {
+	position: relative;
+	padding-left: $padding;
+	padding-right: $padding;
+
+	&--fluid {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	&--hero {
+		height: 100vh;
+		height: calc(100vh - #{var(--header-height)});
+		min-height: 600px;
+	}
+}

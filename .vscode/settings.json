@@ -1,0 +1,22 @@
+{
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.formatOnSave": true,
+    "[svg]": {
+        "editor.defaultFormatter": "jock.svg"
+    },
+    "cSpell.words": [],
+    "cSpell.ignoreWords": ["phme"],
+    "cSpell.ignorePaths": [
+        "node_modules",
+        "**/node_modules",
+        "**/node_modules/**",
+        ".git",
+        "*.dll",
+        "**/*.dll",
+        "package.json",
+        ".vscode/**"
+    ]
+}

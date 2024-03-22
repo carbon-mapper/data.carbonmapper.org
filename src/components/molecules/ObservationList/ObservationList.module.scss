@@ -1,0 +1,18 @@
+@import 'mixins';
+@import 'helpers';
+
+.container {
+    overflow: hidden;
+}
+
+.list {
+    position: relative;
+    height: 100%;
+    padding-bottom: 4em;
+    overflow-y: scroll;
+    @extend %no-scrollbar;
+
+    li + li {
+        margin-top: 0.5em;
+    }
+}

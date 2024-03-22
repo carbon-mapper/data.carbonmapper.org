@@ -1,0 +1,109 @@
+@import 'mixins';
+@import 'variables/easings';
+
+.label {
+    --color: var(--color-text);
+    --color-active: var(--color-accent-blue);
+    --color-hover: var(--color-blue-dark);
+
+    position: relative;
+    align-self: start;
+    padding-top: vw(20);
+    display: grid;
+    grid-template-rows: auto vw(10);
+    grid-template-columns: 100%;
+    gap: 0.2em;
+
+    @include hover {
+        svg {
+            transform: rotate(360deg);
+            path {
+                stroke: currentColor;
+            }
+        }
+    }
+}
+
+.current {
+    display: block;
+    width: 100%;
+    @include flex(row, space-between, center);
+    @include font-size(14, 1.3);
+    letter-spacing: vw(0.01);
+    font-weight: 500;
+
+    svg path {
+        stroke: var(--color-grey-medium);
+    }
+
+    &.is-open {
+        svg {
+            transform: rotate(180deg);
+        }
+    }
+}
+
+.list {
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    top: calc(100% - vw(10));
+    width: 100%;
+    border-radius: var(--border-radius);
+    border: 1px solid transparent;
+    border-top: var(--border-light);
+    @include font-size(14, 15);
+    color: var(--color-text);
+    transition: max-height 333ms $ease-custom, border 333ms linear;
+    background-color: var(--color-bg);
+    overflow: hidden;
+    max-height: 0;
+    pointer-events: none;
+
+    &.is-open {
+        max-height: vw(234);
+        border: var(--border-active);
+    }
+}
+
+.list-wrapper {
+    height: 100%;
+    padding: vw(18) vw(16) vw(16);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    // grid-auto-flow: column;
+    gap: 0.8em 1.5em;
+}
+
+.option {
+    font-weight: 400;
+    padding-bottom: 0.75em;
+    border-bottom: var(--border-light);
+    transition: 200ms color ease-in-out, 200ms border-color ease-in-out;
+
+    button {
+        display: block;
+        width: 100%;
+        text-align: left;
+        pointer-events: all;
+    }
+
+    @include hover {
+        color: var(--color-hover);
+        border-color: var(--color-accent-blue);
+    }
+}
+
+.error {
+    grid-column: 1;
+    grid-row: 2;
+    margin-top: 0.25em;
+    @include font-size(11, 1);
+    color: var(--color-red);
+    transition: opacity 333ms linear;
+    opacity: 0;
+
+    .is-error & {
+        opacity: 1;
+    }
+}

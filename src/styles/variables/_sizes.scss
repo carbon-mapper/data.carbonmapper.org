@@ -1,0 +1,76 @@
+$size-desktop: 1024px;
+$size-hd: 1600px;
+$size-fhd: 1850px;
+$size-wqhd: 2300px;
+$size-ultra-hd: 3000px;
+$size-tablet: 768px;
+$size-laptop: 720px;
+$size-phone5: 568px;
+$size-min: 320px;
+
+$browser-context: 16px;
+$line-height: 1;
+
+$padding: vw(23);
+
+$dashboard-padding: (
+    desktop: vw(20),
+    tablet: vw(20, tablet),
+    phone: vw(20, phone)
+);
+
+$column-gap: vw(45);
+$modal-padding: vw(16);
+
+$size-spacing-s: 1;
+$size-spacing-sm: 4;
+$size-spacing-m: 5.5;
+$size-spacing-l: 20;
+$size-button: 42;
+$size-button-small: 32;
+
+$size-dot: 2px;
+$size-dot-gap: 3px;
+$size-calendar: 32px;
+$size-icon-info-with-padding: vw(15);
+$size-logo-gradient: 5;
+
+$font-size-map-cluster-min: 10;
+$font-size-map-cluster-max: 20;
+
+// dashboard sizes (filters, header, panel)
+$size-dashboard-spacing: $size-button + $size-spacing-sm;
+$size-dashboard-header-height: 42;
+$size-dashboard-filters-width: 350;
+$size-dashboard-left-panel-max-height: 690;
+$size-dashboard-livesearch-width: 350;
+$size-dashboard-livesearch-gap: 1;
+$size-dashboard-gap: 25;
+$size-dashboard-sources-padding: 10;
+$size-dashboard-details-view-width: 523;
+$size-dashboard-details-view-top: 47;
+//
+// $size-dashboard-header-filters-width: 380;
+$size-dashboard-header-filters-width: $size-dashboard-filters-width + 46;
+$size-dashboard-header-gap-width: 100;
+$size-dashboard-header-tags-width: 380;
+$size-dashboard-header-counter-width: 220;
+$size-dashboard-header-logo-width: 125;
+
+// dashboard filters sizes
+$size-dashboard-filters-padding: 20;
+// $size-filters-left-offset: 3;
+$size-filters-left-offset: 4;
+$size-filters-padding-x: 20;
+
+//// margins and paddings
+$padding-button-text-x: 16;
+$padding-button-text-y: 11.5;
+$padding-tooltip-x: 12;
+$padding-tooltip-y: 10;
+$margin-outer: 20;
+$gap-buttons: $size-spacing-s;
+
+//// misc
+$border-radius: 2;
+$blur: 4;

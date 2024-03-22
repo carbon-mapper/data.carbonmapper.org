@@ -1,0 +1,32 @@
+@import 'mixins';
+
+.form {
+    grid-area: main;
+
+    fieldset {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, auto);
+        grid-template-areas:
+            'email email'
+            'password password'
+            'reset submit';
+    }
+
+    button {
+        margin-top: 1em;
+        width: fit-content;
+
+        &:first-of-type {
+            justify-self: start;
+        }
+
+        &:last-of-type {
+            justify-self: end;
+        }
+    }
+}
+
+.msLoginBtn {
+    padding-top: 6px;
+}

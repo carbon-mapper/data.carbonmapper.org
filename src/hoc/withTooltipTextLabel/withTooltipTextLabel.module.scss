@@ -1,0 +1,10 @@
+@import "mixins";
+
+.wrapper {
+    @include flex(column, flex-start, flex-start);
+    width: 100%;
+
+    @include breakpoint(desktop) {
+        gap: vw(10);
+    }
+}

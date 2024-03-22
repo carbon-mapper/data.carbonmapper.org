@@ -1,0 +1,262 @@
+@import 'mixins';
+
+.item {
+    border: var(--border-light);
+    border-radius: var(--border-radius);
+    font-weight: 400;
+    transition: border-color 333ms linear;
+    cursor: pointer;
+
+    &.empty {
+        border: var(--border-light);
+        opacity: 0.5;
+    }
+
+    &.isActive {
+        border: var(--border-active);
+
+        .tooltip-toggle {
+            opacity: 1;
+            cursor: help;
+        }
+    }
+
+    @include hover {
+        border: var(--border-hover);
+    }
+
+    table {
+        width: 100%;
+    }
+
+    tr {
+        position: relative;
+
+        & + tr::after {
+            content: '';
+            position: absolute;
+            height: 1px;
+            background-color: var(--color-grey-bright);
+
+            @include breakpoint(desktop) {
+                inset: 0 vw(10) auto vw(10);
+            }
+        }
+    }
+
+    td,
+    th {
+        @include breakpoint(desktop) {
+            padding: vw(9) vw(10) vw(7);
+        }
+    }
+
+    :global {
+        .uppercase {
+            text-transform: uppercase;
+        }
+    }
+}
+
+.details {
+    overflow: hidden;
+
+    td,
+    th {
+        @include font-size(12, 1.1);
+    }
+
+    th {
+        font-weight: inherit;
+    }
+
+    sub {
+        @include font-size(10, 1);
+        font-weight: 400;
+        vertical-align: baseline;
+        margin-left: 0.1em;
+    }
+}
+
+.summary {
+    margin-bottom: -1px;
+    border-bottom: var(--border-light);
+
+    tr {
+        display: grid;
+        justify-items: start;
+        align-items: center;
+
+        @include breakpoint(desktop) {
+            grid-template-columns: vw(70) vw(70) 1fr auto auto;
+        }
+
+        small {
+            font-size: inherit;
+            font-weight: 400;
+        }
+    }
+
+    .tooltip-toggle {
+        opacity: 0;
+        position: relative;
+        padding-inline: 0;
+        margin-top: 0.1em;
+        transition: opacity 333ms linear;
+    }
+}
+
+.isPhme {
+    tr {
+        @include breakpoint(desktop) {
+            grid-template-columns: vw(70) vw(53) 1fr auto auto auto;
+        }
+    }
+}
+
+.phmeCell {
+    grid-column: 4;
+
+    svg {
+        @include breakpoint(desktop) {
+            width: vw(51);
+        }
+    }
+}
+
+.more,
+.nullDetectMore {
+    transition: height 0.3s ease-in-out;
+    // text-transform: uppercase;
+    height: 0;
+
+    table {
+        position: relative;
+        top: 0.5em;
+    }
+
+    td {
+        text-align: right;
+        font-weight: 500;
+
+        &:has(button) {
+            padding: 0;
+        }
+
+        button {
+            padding: vw(7) vw(10) vw(7) vw(10);
+            display: inline-block;
+            position: relative;
+            height: 100%;
+
+            svg {
+                pointer-events: none;
+            }
+        }
+
+        .tooltip {
+            text-align: center !important;
+        }
+    }
+}
+
+.details.expanded .more {
+    @include breakpoint(desktop) {
+        height: 15.3em;
+    }
+}
+
+.details.expanded .nullDetectMore {
+    @include breakpoint(desktop) {
+        height: 10em;
+    }
+}
+
+.date {
+    text-transform: uppercase;
+
+    span:first-of-type {
+        font-weight: 600;
+    }
+}
+
+.time {
+    width: 100%;
+    position: relative;
+    border-right: var(--border-light);
+
+    span:first-of-type {
+        font-weight: 600;
+    }
+}
+
+.bold {
+    font-weight: 600;
+}
+
+.noDetection {
+    width: 100%;
+    position: relative;
+    text-transform: uppercase;
+    @include flex(row, flex-start, center);
+
+    span:first-of-type {
+        font-weight: 600;
+    }
+
+    svg {
+        margin-right: 0.5em;
+        margin-bottom: 0.3em;
+
+        path:last-of-type {
+            fill: currentColor;
+        }
+    }
+}
+
+.date + .time::before {
+    content: ' ';
+    position: absolute;
+    width: 1px;
+    background-color: var(--color-grey-light);
+
+    @include breakpoint(desktop) {
+        inset: vw(8) 0 vw(8) 0;
+    }
+}
+
+.emission span {
+    @include font-size(18, 1);
+    font-weight: 600;
+}
+
+.toggle {
+    height: 100%;
+    padding: 0 !important;
+
+    button {
+        @include flex;
+        height: 100%;
+
+        @include breakpoint(desktop) {
+            padding: vw(9) vw(10) vw(7);
+        }
+
+        @include focus {
+            outline: none;
+            position: relative;
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                width: -webkit-fill-available;
+                height: -webkit-fill-available;
+                border: 2px solid var(--color-yellow-a11y);
+            }
+        }
+    }
+}

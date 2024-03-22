@@ -1,0 +1,56 @@
+@import 'mixins';
+@import 'variables/sizes';
+
+.wrapper {
+    width: 100%;
+}
+
+.inner {
+    @include flex(column, center, center);
+    text-align: center;
+
+    @include breakpoint(desktop) {
+        gap: vw(16);
+        padding: $modal-padding * 2 $modal-padding $modal-padding;
+        min-height: vw(187);
+    }
+}
+
+.title {
+    font-weight: 600;
+    color: var(--color-black);
+
+    @include breakpoint(desktop) {
+        @include font-size(20, 24);
+        letter-spacing: vw(-0.5);
+    }
+}
+
+.subtitle {
+    font-weight: 400;
+    color: var(--color-grey);
+
+    @include breakpoint(desktop) {
+        @include font-size(18, 25);
+        letter-spacing: vw(-0.5);
+    }
+}
+
+.bottom {
+    @include flex(row, space-between, center);
+    width: 100%;
+    border-top: 1px solid var(--color-grey-bright);
+
+    @include breakpoint(desktop) {
+        padding: $modal-padding;
+        gap: vw(24);
+    }
+}
+
+.button {
+    font-weight: 700;
+
+    @include breakpoint(desktop) {
+        padding: vw(9);
+    }
+}

@@ -1,0 +1,126 @@
+stages:
+    - Test
+    - Dev Review
+    - Dev Deploy
+    - UAT Review
+    - UAT Deploy
+    - Prod Review
+    - Prod Deploy
+
+default:
+    image: registry.gitlab.com/carbonmapper/cloud-ops/containers/cdk:14
+    cache:
+        - paths:
+              - .cache/pip
+          when: always
+          key:
+              files:
+                  - infra/requirements.txt
+        - paths:
+              - .npm/
+          key:
+              files:
+                  - package-lock.json
+    before_script:
+        - npm config set --global cache=$CI_PROJECT_DIR/.npm prefer-offline=true
+
+variables:
+    PYTHONUNBUFFERED: 'true'
+    PIP_CACHE_DIR: '$CI_PROJECT_DIR/.cache/pip'
+
+.prepare_cdk: &prepare_cdk
+    - npm ci
+    - pip install -r infra/requirements.txt
+
+.build: &build
+    - '[[ ! -z "$PORTAL2_STAGE" ]] && mv .env."$PORTAL2_STAGE" .env'
+    - npm run build
+
+.diff: &diff
+    - *prepare_cdk
+    - *build
+    - cd infra
+    - npx cdk --ci diff --all
+
+.deploy: &deploy
+    - *prepare_cdk
+    - *build
+    - cd infra
+    - npx cdk --ci deploy --all --require-approval never
+
+.cdk:
+    variables:
+        AWS_ROLE_ARN: 'arn:aws:iam::683313638781:role/CarbonMapperGithubRolePortal'
+        CDK_DEFAULT_REGION: 'us-west-2'
+        CDK_DEFAULT_ACCOUNT: '683313638781'
+        AWS_DEFAULT_REGION: $CDK_DEFAULT_REGION
+    id_tokens:
+        GITLAB_OIDC_TOKEN:
+            aud: https://gitlab.com
+    rules:
+        - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+Dev Review:
+    extends: .cdk
+    stage: Dev Review
+    variables:
+        PORTAL2_STAGE: dev
+    rules: null
+    script:
+        - *diff
+
+Dev Deploy:
+    extends: .cdk
+    stage: Dev Deploy
+    variables:
+        PORTAL2_STAGE: dev
+    needs: ['Dev Review']
+    environment:
+        name: development
+        url: https://data-dev.carbonmapper.org
+    script:
+        - *deploy
+
+UAT Review:
+    extends: .cdk
+    stage: UAT Review
+    variables:
+        PORTAL2_STAGE: uat
+    needs: ['Dev Deploy']
+    script:
+        - *diff
+
+UAT Deploy:
+    extends: .cdk
+    stage: UAT Deploy
+    variables:
+        PORTAL2_STAGE: uat
+    when: manual
+    needs: ['UAT Review']
+    environment:
+        name: staging
+        url: https://data-uat.carbonmapper.org
+    script:
+        - *deploy
+
+Prod Review:
+    extends: .cdk
+    stage: Prod Review
+    variables:
+        PORTAL2_STAGE: prod
+    needs: ['UAT Deploy']
+    script:
+        - *diff
+
+Prod Deploy:
+    extends: .cdk
+    stage: Prod Deploy
+    variables:
+        PORTAL2_STAGE: prod
+    when: manual
+    needs: ['Prod Review']
+    environment:
+        name: production
+        url: https://data.carbonmapper.org
+    script:
+        - *deploy

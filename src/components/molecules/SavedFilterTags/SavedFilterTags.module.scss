@@ -1,0 +1,23 @@
+@import "mixins";
+@import "variables/easings";
+
+.tags {
+    @include flex(row, flex-start, flex-start);
+    flex-wrap: wrap;
+    transition: margin-top 0.65s $ease-custom;
+    will-change: margin-top;
+
+    @include breakpoint(desktop) {
+        gap: vw(4);
+        padding-right: vw(40);
+    }
+
+
+    button {
+        pointer-events: none;
+
+        svg {
+            display: none;
+        }
+    }
+}

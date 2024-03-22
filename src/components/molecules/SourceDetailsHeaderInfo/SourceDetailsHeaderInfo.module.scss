@@ -1,0 +1,114 @@
+@import 'mixins';
+@import 'variables/easings';
+
+.info {
+    grid-area: info;
+    z-index: 1;
+    height: 3rem;
+    margin-top: 0.5em;
+    border-top: var(--border-light);
+    color: var(--color-text);
+    transition: height 666ms $ease-out;
+    will-change: height;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: repeat(3, auto);
+    gap: 0.5em;
+    grid-template-areas:
+        'button table'
+        '. table'
+        '. study';
+    pointer-events: none;
+
+    &.is-open {
+        height: 5rem;
+        z-index: 3;
+        pointer-events: auto;
+
+        :global .chevron {
+            transform: rotate(180deg);
+        }
+
+        .study,
+        table {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .table-wrapper {
+        grid-area: table;
+    }
+
+    .study {
+        grid-area: study;
+        width: fit-content;
+        justify-self: end;
+    }
+
+    .toggle {
+        grid-area: button;
+        width: vw(24);
+        height: fit-content;
+        pointer-events: auto;
+
+        @include hover {
+            svg :global path:not(.chevron) {
+                fill: var(--color-grey-french-active);
+            }
+        }
+    }
+
+    svg :global .chevron {
+        transform-origin: center center;
+        transition: transform 666ms $ease-out;
+    }
+
+    svg :global path:not(.chevron) {
+        transition: fill var(--transition-fast);
+    }
+
+    table {
+        margin-top: 0.5em;
+        opacity: 0;
+        transform: translateY(-3em);
+        transition: opacity 666ms $ease-in-out, transform 666ms $ease-out;
+        will-change: opacity, transform;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    td,
+    th {
+        @include breakpoint(desktop) {
+            @include font-size(12, 1.2);
+        }
+    }
+
+    th {
+        width: 11ch;
+        text-align: left;
+        font-weight: 400;
+    }
+
+    td {
+        font-weight: 500;
+
+        button {
+            position: relative;
+            padding: 0 0.5em;
+
+            svg {
+                pointer-events: none;
+            }
+        }
+    }
+
+    :global(.tooltip-info) {
+        cursor: help;
+        display: inline-block;
+        padding-left: 0;
+    }
+}

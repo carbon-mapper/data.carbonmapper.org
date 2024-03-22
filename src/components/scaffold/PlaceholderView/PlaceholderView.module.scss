@@ -1,0 +1,94 @@
+@import "mixins";
+@import "variables/zindex";
+
+.wrapper {
+    @include z-index(placeholder);
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: var(--color-white);
+
+    @include breakpoint(desktop) {
+        display: none;
+    }
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.inner {
+    @include flex(column, center, center);
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+
+    @each $bp in phone, tablet {
+
+        @include breakpoint($bp) {
+            padding: vw(50, $bp);
+        }
+    }
+}
+
+.logo {
+
+    :global {
+
+        .logo {
+            width: 100%;
+            height: fit-content;
+        }
+    }
+
+    @each $bp in phone, tablet {
+
+        @include breakpoint($bp) {
+            width: vw(133, $bp);
+            margin-bottom: vw(39, $bp);
+            height: vw(45, $bp);
+        }
+    }
+}
+
+.title {
+    @include font-size(20, 25);
+    color: var(--color-black);
+    font-weight: 700;
+
+    @each $bp in phone, tablet {
+
+        @include breakpoint($bp) {
+            margin-bottom: vw(24, $bp);
+            letter-spacing: vw(0.01, $bp);
+        }
+    }
+}
+
+.text {
+    @include font-size(16, 23);
+    color: var(--color-grey);
+    max-width: 20ch;
+
+    @each $bp in phone, tablet {
+
+        @include breakpoint($bp) {
+            letter-spacing: vw(-0.5, phone);
+        }
+    }
+}
+
+.image {
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    inset: 0;
+    filter: blur(vw(2));
+    opacity: 0.7;
+}

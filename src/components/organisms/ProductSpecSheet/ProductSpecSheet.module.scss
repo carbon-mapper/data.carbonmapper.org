@@ -1,0 +1,21 @@
+@import 'mixins';
+@import 'variables/easings';
+
+.container {
+    @include flex(column, center, flex-start);
+    gap: 1em;
+
+    .wrapper {
+        padding: 0 1rem 1rem;
+        @include font-size(14, 17);
+    }
+
+    p {
+        font-weight: 400;
+        margin-bottom: 1em;
+    }
+ 
+    button {
+        margin-bottom: 0.5em;
+    }
+}

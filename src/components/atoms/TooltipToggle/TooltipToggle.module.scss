@@ -1,0 +1,13 @@
+@import 'mixins';
+
+.info {
+    @include flex(row, center, center);
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    cursor: help;
+
+    @include breakpoint(desktop) {
+        padding: vw(4);
+    }
+}

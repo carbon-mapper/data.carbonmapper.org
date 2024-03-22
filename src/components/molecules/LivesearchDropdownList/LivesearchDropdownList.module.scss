@@ -1,0 +1,17 @@
+@import "mixins";
+
+.wrapper {
+    @include flex(column, flex-start, flex-start);
+    background-color: var(--color-bg);
+
+    &,
+    li,
+    button {
+        width: 100%;
+    }
+
+
+    @include breakpoint(desktop) {
+        padding: vw(16) 0;
+    }
+}

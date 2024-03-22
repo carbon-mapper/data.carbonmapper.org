@@ -1,0 +1,37 @@
+@import 'mixins';
+
+.container {
+    grid-area: header;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-areas: 'button title .';
+    align-items: center;
+    margin-bottom: 1em;
+
+    &.profile {
+        grid-template-columns: 1fr auto 1fr;
+        grid-template-areas:
+            'button title .'
+            'subtitle subtitle subtitle';
+    }
+
+    button {
+        grid-area: button;
+
+        svg {
+            transform: rotate(90deg);
+        }
+    }
+
+    h2 {
+        grid-area: title;
+        @include font-size(18, 25);
+        text-align: center;
+    }
+
+    p {
+        grid-area: subtitle;
+        @include font-size(14, 25);
+        text-align: center;
+    }
+}

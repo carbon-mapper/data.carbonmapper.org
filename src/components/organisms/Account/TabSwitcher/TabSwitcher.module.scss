@@ -1,0 +1,9 @@
+@import 'mixins';
+
+.container {
+    grid-area: header;
+    // margin-top: vw(40);
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    grid-template-areas: 'login divider register';
+}

@@ -1,0 +1,153 @@
+@import "mixins";
+
+.wrapper {
+    @include flex(column, flex-start, flex-start);
+    width: 100%;
+    font-weight: 700;
+    position: relative;
+
+    @include breakpoint(desktop) {
+        @include font-size(15, 1);
+    }
+
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+
+    /* Firefox */
+    input[type=number] {
+    -moz-appearance: textfield;
+    }
+
+    &:global {
+
+        &.is-text,
+        &.is-date {
+            padding: 0;
+
+            input {
+                width: 100%;
+                padding: 0;
+                background-color: transparent;
+                font-family: var(--font-primary);
+                font-weight: 700;
+
+                &::placeholder {
+                    font-weight: 700;
+                    color: var(--color-grey-french);
+                }
+            }
+
+
+            @include breakpoint(desktop) {
+
+                input {
+                    @include font-size(15, 1);
+                    min-height: vw(36);
+
+                    &::placeholder {
+                        @include font-size(15, 1);
+                    }
+                }
+            }
+        }
+
+        &.is-date {
+
+            input {
+                width: 100%;
+                color: var(--color-black);
+            }
+
+            button {
+                width: auto;
+
+                div {
+                    position: relative;
+                }
+
+                @include hover {
+
+                    svg {
+
+                        path[stroke]:not([stroke="none"]) {
+                            stroke: var(--color-accent-blue);
+                        }
+
+                        path[fill]:not([fill="none"]) {
+                            fill: var(--color-accent-blue);
+                        }
+                    }
+                }
+
+            }
+        }
+
+
+        &.is-placeholder {
+
+            button {
+                font-weight: 600;
+                color: var(--color-grey);
+            }
+        }
+
+        &.is-select {
+
+
+            @include hover {
+
+                svg {
+
+                    path[stroke]:not([stroke="none"]) {
+                        stroke: var(--color-accent-blue);
+                    }
+
+                    path[fill]:not([fill="none"]) {
+                        fill: var(--color-accent-blue);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.inner {
+    @include flex(row, flex-start, center);
+    position: relative;
+    width: 100%;
+    border-bottom: 1px solid var(--color-accent-blue);
+}
+
+.button {
+    @include flex(row, space-between, center);
+    height: 100%;
+    width: 100%;
+
+    @include breakpoint(desktop) {
+        padding: vw(6) 0;
+        min-height: vw(36);
+    }
+}
+
+.icon {
+    position: absolute;
+    inset: 0 0 0 auto;
+    pointer-events: none;
+    width: fit-content;
+    height: fit-content;
+    margin-top: auto;
+    margin-bottom: auto;
+
+    path[stroke]:not([stroke="none"]) {
+        transition: stroke var(--transition-fast);
+        stroke: var(--color-grey-french);
+    }
+
+    path[fill]:not([fill="none"]) {
+        fill: var(--color-grey-french);
+    }
+}

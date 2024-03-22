@@ -1,0 +1,138 @@
+@import 'mixins';
+@import 'variables/sizes';
+
+$z-indexes: background, content;
+
+.button {
+    --color-background-default: var(--color-white-alpha);
+    --color-background-active: var(--color-white);
+
+    display: inline-block;
+    position: relative;
+    width: vw($size-button);
+    height: vw($size-button);
+    transition: opacity 333ms linear;
+
+    @include hover {
+        :global {
+            .svg-closer-big {
+                transform: rotate(90deg);
+            }
+        }
+
+        .background {
+            background-color: var(--color-background-active);
+        }
+    }
+
+    * {
+        pointer-events: none;
+    }
+}
+
+.background {
+    @include full;
+    @include z-index(background, $z-indexes);
+    background-color: var(--color-white-blur);
+    transition: background var(--transition-fast);
+
+    @include breakpoint(desktop) {
+        border-radius: vw($border-radius);
+    }
+}
+
+.content {
+    @include flex;
+    @include z-index(content, $z-indexes);
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.isActive:hover,
+.isActive:focus {
+    :global {
+        .tooltip {
+            opacity: 0;
+        }
+    }
+}
+
+.isHidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.isActiveBg {
+    background-color: var(--color-background-active);
+}
+
+.isBlue {
+    path[stroke]:not([stroke='none']) {
+        stroke: var(--color-white);
+    }
+
+    path[fill]:not([fill='none']) {
+        fill: var(--color-white);
+    }
+
+    @include hover {
+        .background {
+            background-color: var(--color-blue-dark);
+        }
+    }
+}
+
+.isBlueBg {
+    background-color: var(--color-accent-blue);
+}
+
+.isBlurBg {
+    backdrop-filter: blur(var(--blur));
+}
+
+.isOpaque {
+    --color-background-active: var(--color-accent-blue);
+
+    @include hover {
+        svg > * {
+            stroke: var(--color-white);
+        }
+    }
+
+    &.isActive {
+        svg > * {
+            stroke: var(--color-white);
+        }
+    }
+}
+
+.isOpaqueBg {
+    background-color: var(--color-white);
+
+    @include hover {
+        background-color: var(--color-accent-blue);
+    }
+
+    .isActive & {
+        background-color: var(--color-accent-blue);
+    }
+}
+
+.transparent {
+    background-color: transparent;
+}
+
+.isTiny {
+    @include flex(row, center, center);
+
+    @include breakpoint(desktop) {
+        width: vw(24);
+        height: vw(24);
+    }
+}
+
+.border {
+    border: var(--border-light);
+    border-radius: var(--border-radius);
+}

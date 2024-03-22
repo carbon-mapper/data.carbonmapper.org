@@ -1,0 +1,28 @@
+@import 'mixins';
+@import 'variables/sizes';
+
+.bottomTag {
+    color: var(--color-grey);
+}
+
+.box {
+    @include flex(column, flex-start, flex-start);
+    height: 100%;
+    margin: 0;
+    border: 1px solid var(--color-grey-light);
+
+    @include breakpoint(desktop) {
+        border-radius: vw($border-radius);
+        padding: $modal-padding / 2 vw(10) $modal-padding;
+        gap: vw(26);
+        margin: $modal-padding;
+    }
+}
+
+.boxDisplay {
+    margin: 0;
+
+    @include breakpoint(desktop) {
+        padding-right: vw(100);
+    }
+}

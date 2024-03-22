@@ -1,0 +1,194 @@
+/* stylelint-disable media-feature-name-no-vendor-prefix */
+@use 'sass:math';
+
+@import 'variables/sizes';
+@import 'variables/zindex';
+
+// Hover
+
+@mixin hover {
+    &:hover {
+        @content;
+    }
+}
+
+@mixin focus {
+    :global(.is-accessibility) &:focus {
+        @content;
+    }
+}
+
+// Breakpoint
+
+@mixin breakpoint($point) {
+    @if $point == 'phone' {
+        @media (max-width: $size-tablet - 1px) {
+            @content;
+        }
+    } @else if $point == 'phone-small' {
+        @media (max-width: $size-min) {
+            @content;
+        }
+    } @else if $point == 'not-phone' {
+        @media (min-width: $size-tablet) {
+            @content;
+        }
+    } @else if $point == 'tablet' {
+        @media (min-width: $size-tablet) and (max-width: $size-desktop - 1px) {
+            @content;
+        }
+    } @else if $point == 'desktop' {
+        @media (min-width: $size-desktop) {
+            @content;
+        }
+    } @else if $point == 'desktop-short' {
+        @media ((min-width: $size-desktop) and (max-height: $size-tablet)) {
+            @content;
+        }
+    } @else if $point == 'hd' {
+        @media (min-width: $size-hd) {
+            @content;
+        }
+    } @else if $point == 'fhd' {
+        @media (min-width: $size-fhd) {
+            @content;
+        }
+    } @else if $point == 'wqhd' {
+        @media (min-width: $size-wqhd) {
+            @content;
+        }
+    } @else if $point == 'ultra-hd' {
+        @media (min-width: $size-ultra-hd) {
+            @content;
+        }
+    } @else if $point == 'not-desktop' {
+        @media (max-width: $size-desktop - 1px) {
+            @content;
+        }
+    } @else if $point == 'not-hd' {
+        @media (max-width: $size-hd - 1px) {
+            @content;
+        }
+    } @else if $point == 'laptop' {
+        @media (min-width: $size-desktop) and (max-height: $size-laptop) {
+            @content;
+        }
+    } @else if $point == 'landscape' {
+        @media (orientation: landscape) {
+            @content;
+        }
+    } @else if $point == 'touch' {
+        @media (pointer: coarse) {
+            @content;
+        }
+    } @else if $point == 'not-touch' {
+        @media not all and (pointer: coarse) {
+            @content;
+        }
+    } @else if $point == 'retina' {
+        @media only screen and (-webkit-min-device-pixel-ratio: 2),
+            only screen and (min-resolution: 192dpi),
+            only screen and (min-width: $size-desktop) {
+            @content;
+        }
+    } @else if $point == 'tablet-landscape' {
+        @media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+            @content;
+        }
+    } @else if $point == 'ipad-pro' {
+        @media only screen and (min-width: 1024px) and (max-height: 1366px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5) {
+            @content;
+        }
+    }
+}
+
+// Full
+
+@mixin full($position: absolute) {
+    position: $position;
+    inset: 0;
+}
+
+// Font size
+
+@mixin font-size($size: $browser-context, $line: $line-height) {
+    font-size: strip-units($size) + px;
+    font-size: math.div(strip-units($size), strip-units($browser-context)) + rem;
+
+    @if (strip-units($line) < 4) {
+        line-height: strip-units($line);
+    } @else {
+        line-height: math.div(strip-units($line), strip-units($size));
+    }
+}
+
+// Strip units
+
+@function strip-units($value) {
+    @return math.div($value, ($value * 0 + 1));
+}
+
+// zindex
+
+@function z($list, $element) {
+    $z-index: index($list, $element);
+
+    @if $z-index {
+        @return $z-index;
+    }
+
+    @warn 'There is no item "#{$element}" in this list; choose one of: #{$list}';
+
+    @return null;
+}
+
+@mixin z-index($element, $list: $elements) {
+    z-index: z($list, $element);
+}
+
+// Flex
+
+@mixin flex($direction: row, $justify: center, $align: center, $flex: flex) {
+    display: $flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+// vw
+
+@function vw($size, $bp: desktop, $max: true) {
+    $layouts: (
+        phone: 375,
+        tablet: 768,
+        desktop: 1280,
+        hd: 1600
+    );
+
+    @if map-has-key($layouts, $bp) {
+        @if ($bp == 'desktop') {
+            @return math.div(strip-units($size), map-get($layouts, $bp)) * 1280 / 16 * 1rem;
+        } @else {
+            @return math.div(strip-units($size), map-get($layouts, $bp)) * 100vw;
+        }
+    } @else {
+        @warn "Unfortunately, no value could be retrieved from `#{$bp}`.";
+    }
+}
+
+// vh
+
+@function vh($size, $bp: desktop) {
+    $layouts: (
+        phone: 375,
+        tablet: 768,
+        desktop: 1250,
+        hd: 1250
+    );
+
+    @if map-has-key($layouts, $bp) {
+        @return math.div(strip-units($size), map-get($layouts, $bp)) * 100vh;
+    } @else {
+        @warn "Unfortunately, no value could be retrieved from `#{$bp}`.";
+    }
+}

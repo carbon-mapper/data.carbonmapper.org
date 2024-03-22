@@ -1,0 +1,8 @@
+export const SECRETS = {
+    MAPBOX_TOKEN: process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN,
+    MAPBOX_STYLES_TOKEN: process.env.NEXT_PUBLIC_MAPBOX_STYLES_TOKEN,
+    MAPBOX_STYLES_ACCESSIBILITY_TOKEN: process.env.NEXT_PUBLIC_MAPBOX_ACCESIBILITY_STYLES_TOKEN,
+    MAPBOX_STYLES_MINIMAP_TOKEN: process.env.NEXT_PUBLIC_MAPBOX_STYLES_MINIMAP_TOKEN,
+    isDevelopment: process.env.NODE_ENV === 'development',
+    isProduction: process.env.NODE_ENV === 'production'
+};

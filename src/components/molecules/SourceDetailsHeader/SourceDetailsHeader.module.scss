@@ -1,0 +1,104 @@
+@import 'mixins';
+@import 'variables/easings';
+
+.container {
+    --child-z-index: 3;
+
+    display: grid;
+    background-color: var(--color-bg);
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: repeat(4, auto);
+    grid-template-areas:
+        'label . closer'
+        'heading . map'
+        'link . map'
+        'info info info'
+        'tabs tabs tabs';
+
+    @include breakpoint(desktop) {
+        padding: vw(9) vw(21) 0;
+    }
+}
+
+.background {
+    grid-area: 1 / 1 / 4 / 4;
+    margin-bottom: -0.5em;
+    background-color: var(--color-bg);
+    z-index: 2;
+}
+
+.label {
+    grid-area: label;
+    z-index: var(--child-z-index);
+    margin-bottom: 0.25em;
+}
+
+.heading {
+    grid-area: heading;
+    z-index: calc(var(--child-z-index) + 1);
+    @include font-size(24, 1.1);
+    letter-spacing: vw(-0.5);
+    font-weight: 700;
+
+    span.country {
+        position: relative;
+        display: block;
+        width: fit-content;
+    }
+
+    :global(.svg-source-co2),
+    :global(.svg-source) {
+        margin-left: 0.33em;
+        margin-right: 0.1em;
+        width: 0.8em;
+        cursor: help;
+    }
+}
+
+.link {
+    grid-area: link;
+    z-index: var(--child-z-index);
+    margin: 0.5em 0 0.25em;
+    font-weight: 600;
+    color: var(--color-accent-blue);
+    transition: color var(--transition-fast);
+
+    @include breakpoint(desktop) {
+        @include font-size(10, 1);
+    }
+
+    @include hover {
+        color: var(--color-blue-dark);
+    }
+}
+
+.closer {
+    grid-area: closer;
+    z-index: var(--child-z-index);
+    justify-self: end;
+
+    @include breakpoint(desktop) {
+        height: vw(24);
+
+        svg {
+            height: 100%;
+        }
+    }
+
+    &:hover svg path {
+        transform: rotate(90deg);
+    }
+}
+
+.map {
+    grid-area: map;
+    z-index: var(--child-z-index);
+    justify-self: end;
+    width: vw(100);
+    height: auto;
+}
+
+.icon {
+    width: auto;
+    height: auto;
+}

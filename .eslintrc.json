@@ -1,0 +1,65 @@
+{
+    "extends": [
+        "next/core-web-vitals",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:react/recommended",
+        "plugin:import/errors",
+        "plugin:import/warnings",
+        "plugin:jsx-a11y/recommended",
+        "plugin:react/jsx-runtime",
+        "next",
+        "prettier"
+    ],
+    "plugins": ["perfectionist"],
+    "rules": {
+        "@typescript-eslint/no-namespace": "off",
+        "arrow-parens": [1, "as-needed"],
+        "@typescript-eslint/ban-ts-comment": 1,
+        "comma-dangle": 1,
+        "@typescript-eslint/no-empty-interface": "off", // Consider improving generated types to reenable this rule
+        "perfectionist/sort-imports": [
+            "error",
+            {
+                "type": "natural",
+                "order": "asc",
+                "groups": [
+                    ["builtin", "external"],
+                    "react",
+                    "next",
+                    "type",
+                    "internal-type",
+                    "config",
+                    "store",
+                    "hooks",
+                    "utils",
+                    "internal",
+                    ["parent-type", "sibling-type", "index-type"],
+                    ["parent", "sibling", "index"],
+                    "object",
+                    "animations",
+                    "assets",
+                    "style",
+                    "unknown"
+                ],
+                "custom-groups": {
+                    "value": {
+                        "animations": "@/animations/**",
+                        "assets": "@/assets/**",
+                        "config": "@/config/**",
+                        "hooks": "@/hooks/**",
+                        "next": ["next", "next-*"],
+                        "react": ["react", "react-*"],
+                        "store": "@/store/**",
+                        "utils": "@/utils/**"
+                    },
+                    "type": {
+                        "react": "react",
+                        "next": "next"
+                    }
+                },
+                "newlines-between": "never",
+                "internal-pattern": ["@/layouts/**", "@/pages/**", "@/hoc/**", "@/components/**"]
+            }
+        ]
+    }
+}

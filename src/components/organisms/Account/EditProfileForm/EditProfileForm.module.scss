@@ -1,0 +1,24 @@
+@import 'mixins';
+
+.form {
+    grid-area: main;
+
+    fieldset {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, auto);
+        grid-template-areas:
+            'email email'
+            'first last'
+            'organization organization'
+            'title title'
+            '. submit';
+        gap: 0 1em;
+    }
+}
+
+.submit {
+    margin-top: 1em;
+    width: fit-content;
+    justify-self: end;
+}

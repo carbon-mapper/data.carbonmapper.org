@@ -1,0 +1,49 @@
+@import 'mixins';
+@import 'variables/easings';
+
+.container {
+    opacity: 0;
+    position: absolute;
+    top: 1em;
+    transform: translateX(110%);
+    transition: opacity 666ms $ease-in-out, transform 666ms $ease-out;
+
+    @include breakpoint(desktop) {
+        left: vw(21);
+        right: vw(21);
+    }
+
+    &.isActive {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    table {
+        width: 100%;
+    }
+
+    table + table {
+        margin-top: 1.5em;
+    }
+
+    tr {
+        border-bottom: var(--border-bright);
+    }
+
+    td,
+    th {
+        @include font-size(12, 1.1);
+        padding-top: 0.5em;
+        padding-bottom: 0.33em;
+    }
+
+    th {
+        text-align-last: left;
+        font-weight: 400;
+    }
+
+    td {
+        text-align: right;
+        font-weight: 500;
+    }
+}

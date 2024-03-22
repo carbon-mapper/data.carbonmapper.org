@@ -1,0 +1,5 @@
+<svg version="1.1" class="svg-loupe" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+<path id="loupe" fill="none" stroke="#F4F4F4" stroke-width="2" stroke-linecap="square" stroke-linejoin="bevel" d="M14.9,14.9
+	L18,18 M16.1,11.1c0,2.8-2.3,5.1-5.1,5.1s-5.1-2.3-5.1-5.1C6,8.3,8.3,6,11.1,6S16.1,8.3,16.1,11.1z"/>
+</svg>

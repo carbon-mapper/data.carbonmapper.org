@@ -1,0 +1,68 @@
+@import 'mixins';
+
+.wrapper {
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    min-height: vw(22);
+    margin-top: var(--spacing-extra-small);
+    background-color: var(--color-bg);
+    padding: var(--spacing-small) var(--spacing-large);
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+
+    &.inside {
+        position: static;
+    }
+
+    input {
+        cursor: pointer;
+        position: absolute;
+        left: var(--spacing-large);
+        right: var(--spacing-large);
+        opacity: 0;
+
+        // :global(.is-accessibility) & {
+        //     position: relative;
+        //     opacity: 1;
+        // }
+    }
+
+    .track {
+        --thumb-size: #{vw(10)};
+
+        position: absolute;
+        height: vw(4);
+        margin-block: vw(6);
+        left: calc(var(--spacing-large) * 2);
+        right: calc(var(--spacing-large) * 2);
+        pointer-events: none;
+
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 0 calc(var(--thumb-size) / -2);
+            background-color: var(--color-grey-light);
+            border-radius: var(--border-radius);
+        }
+    }
+
+    .fill {
+        position: absolute;
+        left: calc(var(--thumb-size) / -2);
+        top: 0;
+        bottom: 0;
+        background-color: var(--color-accent-blue);
+        border-radius: var(--border-radius);
+    }
+
+    .handle {
+        position: absolute;
+        top: calc(50% - var(--thumb-size) / 2);
+        width: var(--thumb-size);
+        height: var(--thumb-size);
+        background-color: var(--color-accent-blue);
+        border-radius: 50%;
+        outline: calc(var(--thumb-size) / 5) solid var(--color-white);
+        transform: translateX(vw(-5));
+    }
+}

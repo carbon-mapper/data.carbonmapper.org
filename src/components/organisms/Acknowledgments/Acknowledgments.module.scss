@@ -1,0 +1,58 @@
+@import 'mixins';
+@import 'variables/easings';
+
+.container {
+    @include flex(column, center, flex-start);
+    gap: 1em;
+
+    .wrapper {
+        padding: 0 1rem 1rem;
+        @include font-size(14, 17);
+    }
+
+    p {
+        font-weight: 400;
+        margin-bottom: 1em;
+    }
+
+    a {
+        font-weight: 500;
+        line-height: 1.3;
+
+        & + p {
+            margin-top: 1em;
+        }
+    }
+
+    // TODO: this is a duplicate of the one in src/components/organisms/DataProvidersModal/DataProvidersModal.module.scss and some others
+    a {
+        color: var(--color-accent-blue);
+        position: relative;
+        display: block;
+        width: fit-content;
+        transition: color var(--transition-fast), var(--transition-fast);
+        transition-timing-function: $ease-custom;
+
+        :global .svg-hyperlink {
+            margin-left: 0.33em;
+
+            path {
+                fill: currentColor;
+            }
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0.2em;
+            height: 1px;
+            background-color: var(--color-accent-blue);
+        }
+
+        &:hover {
+            color: var(--color-blue-dark);
+        }
+    }
+}

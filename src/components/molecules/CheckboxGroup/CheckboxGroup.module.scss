@@ -1,0 +1,117 @@
+@import 'mixins';
+
+.container {
+    @include flex(row, flex-start, center);
+    flex-wrap: wrap;
+    width: 100%;
+
+    @include breakpoint(desktop) {
+        gap: vw(22);
+    }
+}
+
+.wrapper {
+    position: relative;
+}
+
+.input {
+    &:global {
+        &[type='radio']:checked + label {
+            .dot::before {
+                opacity: 1;
+            }
+        }
+
+        &[type='checkbox'] + label {
+            path {
+                opacity: 0;
+            }
+        }
+
+        &[type='checkbox']:checked + label {
+            path {
+                opacity: 1;
+            }
+        }
+
+        @include focus {
+            + label {
+                rect {
+                    stroke: var(--color-yellow-a11y);
+                    stroke-width: 2px;
+                }
+            }
+        }
+    }
+}
+
+.label {
+    @include flex(row, flex-start, center);
+    cursor: pointer;
+
+    svg {
+        path {
+            transition: opacity var(--transition-fast);
+        }
+    }
+
+    @include breakpoint(desktop) {
+        gap: vw(8);
+    }
+
+    @include hover {
+        .dot {
+            border-color: var(--color-black);
+        }
+    }
+}
+
+.dot {
+    border: 1px solid var(--color-grey-french);
+    position: relative;
+    transition: border-color var(--transition-fast);
+
+    &,
+    &::before {
+        border-radius: 50%;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        background-color: var(--color-accent-blue);
+        opacity: 0;
+    }
+
+    @include breakpoint(desktop) {
+        width: vw(16);
+        height: vw(16);
+
+        &::before {
+            width: vw(8);
+            height: vw(8);
+        }
+    }
+}
+
+.text {
+    font-weight: 500;
+    color: var(--color-black);
+
+    span {
+        sub {
+            vertical-align: baseline;
+            position: relative;
+
+            @include breakpoint(desktop) {
+                top: vw(3);
+            }
+        }
+    }
+
+    @include breakpoint(desktop) {
+        @include font-size(12, 1);
+    }
+}

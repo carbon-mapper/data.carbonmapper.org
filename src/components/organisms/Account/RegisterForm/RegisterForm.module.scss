@@ -1,0 +1,27 @@
+@import 'mixins';
+
+.form {
+    grid-area: main;
+
+    fieldset {
+        display: grid;
+        grid-template-columns: repeat(2, 162px);
+        grid-template-rows: repeat(7, auto);
+        grid-template-areas:
+            'email email'
+            'first last'
+            'organization title'
+            'industry industry'
+            'notes notes'
+            'password confirm'
+            '. submit';
+        gap: 0 1em;
+        transition: 2000ms;
+    }
+}
+
+.submit {
+    margin-top: 1em;
+    justify-self: end;
+    width: fit-content;
+}

@@ -1,0 +1,8 @@
+<svg class="svg-crosshair" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="12" cy="12" r="1" stroke="black" stroke-width="2"/>
+<circle cx="12" cy="12" r="6" stroke="black" stroke-width="2"/>
+<path d="M12 17V21" stroke="black" stroke-width="2"/>
+<path d="M12 3V7" stroke="black" stroke-width="2"/>
+<path d="M17 12L21 12" stroke="black" stroke-width="2"/>
+<path d="M3 12L7 12" stroke="black" stroke-width="2"/>
+</svg>

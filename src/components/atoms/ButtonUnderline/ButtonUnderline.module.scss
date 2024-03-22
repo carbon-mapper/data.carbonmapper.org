@@ -1,0 +1,87 @@
+@import 'mixins';
+
+.button {
+    --color: var(--color-accent-blue);
+
+    font-weight: 400;
+    position: relative;
+
+    @include breakpoint(desktop) {
+        @include font-size(11, 25);
+        letter-spacing: vw(0.01);
+    }
+
+    // @include hover {
+
+    //     :global {
+
+    //         .tooltip {
+    //             opacity: 1;
+    //         }
+    //     }
+
+    // }
+
+    &:not(.tabs) {
+        @include hover {
+            .underline {
+                transform: translateY(-2px);
+            }
+        }
+    }
+}
+
+.text {
+    color: var(--color);
+}
+
+.underline {
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 1px;
+    background-color: var(--color);
+    transition: transform var(--transition-fast);
+}
+
+.bold {
+    font-weight: 700;
+    margin-inline: 0.33em;
+    align-self: flex-end;
+
+    @include breakpoint(desktop) {
+        @include font-size(12, 20);
+    }
+}
+
+.black {
+    --color: var(--color-black);
+}
+
+.tabs {
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 700;
+    transition: color var(--transition-fast);
+
+    & + .tabs {
+        margin-left: 1.75em;
+    }
+
+    .underline {
+        opacity: 0;
+        height: 2px;
+    }
+
+    &:not(.isActive) {
+        --color: var(--color-grey);
+        font-weight: 400;
+    }
+
+    &.isActive .underline {
+        opacity: 1;
+    }
+
+    @include hover {
+        --color: var(--color-blue);
+    }
+}

@@ -1,0 +1,54 @@
+@import 'mixins';
+
+.item {
+    @include font-size(12, 1);
+    position: relative;
+    white-space: nowrap;
+    cursor: pointer;
+
+    button {
+        position: absolute;
+        inset: 0;
+    }
+
+    &.isActive .dot {
+        opacity: 1;
+    }
+
+    &.isDisabled {
+        pointer-events: none;
+        .color {
+            background-color: var(--color-grey-light);
+        }
+
+        .text {
+            color: var(--color-grey-light);
+        }
+
+        .dot {
+            opacity: 0;
+        }
+    }
+}
+
+.color {
+    position: relative;
+    display: inline-block;
+    height: 0.8em;
+    width: 0.8em;
+    margin-right: 0.4em;
+    border-radius: var(--border-radius);
+}
+
+.text {
+    font-weight: 400;
+}
+
+.dot {
+    position: absolute;
+    inset: 30%;
+    border-radius: 50%;
+    background-color: var(--color-bg);
+    transition: opacity 150ms linear;
+    opacity: 0;
+}

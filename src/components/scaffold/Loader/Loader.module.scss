@@ -1,0 +1,56 @@
+@import "mixins";
+
+.wrapper {
+    @include z-index(loader);
+    @include flex(row, flex-end, center);
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--color-white);
+
+    @include breakpoint(desktop) {
+        padding: vw(45);
+    }
+}
+
+.inner {
+    @include flex(row, flex-start, center);
+    font-family: var(--font-primary);
+    color: var(--color-black);
+    position: relative;
+
+    @include breakpoint(desktop) {
+        gap: vw(12);
+    }
+}
+
+.info {
+    font-weight: 400;
+
+    @include breakpoint(desktop) {
+        @include font-size(12, 1.1);
+    }
+}
+
+.line {
+    width: 1px;
+    background-color: var(--color-accent-violet);
+
+    @include breakpoint(desktop) {
+        height: vw(51);
+    }
+}
+
+.count {
+    color: var(--color-black);
+    font-weight: 700;
+
+    @include breakpoint(desktop) {
+        @include font-size(18, 1);
+    }
+}
+
+.logo {
+    pointer-events: none;
+}
