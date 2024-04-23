@@ -1,0 +1,17 @@
+<svg width="7" height="102" viewBox="0 0 7 102" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="YlOrRd_09-colormap" x1="0" y1="0" x2="0" y2="102" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#ffffcc" />
+            <stop offset="0.125" stop-color="#ffeda0" />
+            <stop offset="0.25" stop-color="#fed976" />
+            <stop offset="0.375" stop-color="#feb24c" />
+            <stop offset="0.5" stop-color="#fd8d3c" />
+            <stop offset="0.625" stop-color="#fc4e2a" />
+            <stop offset="0.75" stop-color="#e31a1c" />
+            <stop offset="0.875" stop-color="#bd0026" />
+            <stop offset="1" stop-color="#800026" />
+        </linearGradient>
+    </defs>
+    <rect width="6" height="102" rx="3" transform="matrix(1 -4.00688e-08 -4.76852e-08 -1 0.910156 102)"
+        fill="url(#YlOrRd_09-colormap)" />
+</svg>

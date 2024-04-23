@@ -1,0 +1,9 @@
+@import "mixins";
+
+.label {
+    font-weight: 400;
+
+    @include breakpoint(desktop) {
+        @include font-size(12, 1);
+    }
+}

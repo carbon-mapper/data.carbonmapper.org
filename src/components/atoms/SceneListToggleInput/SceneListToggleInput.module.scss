@@ -1,0 +1,53 @@
+@import 'mixins';
+@import 'helpers';
+@import 'variables/easings';
+
+.wrapper {
+    @include flex(row, flex-start, center);
+    gap: 0.5em;
+
+    input[type='checkbox'] {
+        position: absolute;
+        margin-left: 0.5em;
+        opacity: 0;
+        height: 100%;
+        pointer-events: none;
+
+        :global(.is-accessibility) & {
+            position: static;
+            opacity: 1;
+            cursor: pointer;
+            pointer-events: all;
+        }
+    }
+}
+
+.track {
+    height: 1em;
+    width: 2em;
+    border-radius: 4em;
+    background-color: var(--color-grey-light);
+    cursor: pointer;
+
+    :global(.is-accessibility) & {
+        display: none;
+    }
+}
+
+.handle {
+    --color: var(--color-grey);
+
+    height: 1em;
+    width: 1em;
+    border-radius: 50%;
+    background-color: var(--color);
+    transition: transform 333ms $ease-custom, background-color 333ms linear;
+
+    &.active {
+        transform: translateX(100%);
+
+        &.color-state {
+            --color: var(--color-accent-blue);
+        }
+    }
+}

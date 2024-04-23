@@ -1,0 +1,66 @@
+@import 'mixins';
+@import 'variables/easings';
+
+.container {
+    --padding: #{vw(10)};
+
+    transition: max-height 500ms $ease-custom;
+    overflow: hidden;
+    pointer-events: none;
+
+    @include breakpoint(desktop) {
+        @include flex(column, flex-start, flex-start);
+        gap: vw(4);
+        position: fixed;
+        left: 0;
+        top: vw(70);
+        width: max-content;
+        height: 0;
+        margin-left: vw(4);
+        padding-inline: var(--padding);
+    }
+
+    :global {
+        .tag:first-of-type {
+            margin-top: vw(10);
+        }
+    }
+}
+
+.isOpen {
+    height: auto;
+    pointer-events: all;
+}
+
+.background {
+    position: absolute;
+    inset: 0 0 vw(18) 0;
+    z-index: -1;
+    background-color: var(--color-bg);
+}
+
+.button {
+    @include flex;
+    margin-top: 1em;
+    width: calc(100% + var(--padding) * 2);
+    height: vw(18);
+    align-self: center;
+    backdrop-filter: blur(var(--blur));
+
+    @include focus {
+        outline: none;
+        position: relative;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            width: -webkit-fill-available;
+            height: -webkit-fill-available;
+            border: 2px solid var(--color-yellow-a11y);
+        }
+    }
+}

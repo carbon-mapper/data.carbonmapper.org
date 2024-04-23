@@ -1,0 +1,6 @@
+@import "mixins";
+
+.wrapper {
+    @include flex(column, flex-start, flex-start);
+    width: 100%;
+}

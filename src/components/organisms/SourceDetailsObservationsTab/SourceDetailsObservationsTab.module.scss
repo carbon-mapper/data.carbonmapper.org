@@ -1,0 +1,41 @@
+@import 'mixins';
+@import 'helpers';
+@import 'variables/easings';
+
+.container {
+    --margin: 0.75em;
+
+    height: 100%;
+    padding-top: var(--margin);
+    transform: translateX(-100%);
+    transition: opacity 666ms $ease-in-out, transform 666ms $ease-out;
+    opacity: 0;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: vw(80) vw(140) 1fr;
+
+    &.is-active {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    &.no-chart {
+        grid-template-rows: vw(80) 1fr;
+
+        & :global(.line-chart) {
+            display: none;
+        }
+    }
+}
+
+.statistics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(1, auto);
+    grid-template-areas: 'emission persistent plumes';
+
+    @include breakpoint(desktop) {
+        grid-gap: vw(11) 0;
+    }
+}

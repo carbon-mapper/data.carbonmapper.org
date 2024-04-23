@@ -1,0 +1,62 @@
+@import 'mixins';
+@import 'variables/easings';
+@import 'variables/zindex';
+
+.container {
+    --bottom: calc(#{vw($size-button)} + #{vw($size-spacing-m)});
+
+    @include z-index(statistics, $dashboard-elements);
+    position: absolute;
+    right: 0;
+    bottom: calc(#{var(--bottom)} + #{vw(21)});
+    min-width: vw(740);
+    grid-template-rows: 1fr auto auto;
+    grid-template-columns: 1fr vw(220) 1px vw(220);
+    padding: vw($size-spacing-l);
+    border-radius: var(--border-radius);
+    background-color: var(--color-white-blur);
+    backdrop-filter: blur(var(--blur));
+    display: grid;
+    pointer-events: auto;
+    grid-template-areas:
+        'heading heading . closer'
+        'emission graph graph graph'
+        '. plumes separator persistent';
+
+    :global {
+        .tooltip {
+            width: vw(230);
+        }
+    }
+}
+
+.heading {
+    grid-area: heading;
+    @include font-size(18, 25);
+    letter-spacing: vw(-0.5);
+    width: fit-content;
+}
+
+.closer {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: vw($size-button);
+    height: vw($size-button);
+
+    svg {
+        width: vw(18);
+        height: vw(18);
+    }
+
+    @include hover {
+        svg {
+            transform: rotate(-90deg);
+        }
+    }
+}
+
+.separator {
+    grid-area: separator;
+    background-color: var(--color-grey-medium);
+}

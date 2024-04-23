@@ -1,0 +1,34 @@
+.dashboard {
+    @include flex(column, flex-start, flex-start);
+    // position: relative;
+    width: 100vw;
+    height: 100vh;
+    // position: relative; // Why!? Why are we doing all this css??
+    pointer-events: none;
+    position: absolute;
+
+    @each $bp, $value in $dashboard-padding {
+        @include breakpoint($bp) {
+            padding: $value;
+        }
+    }
+
+    @include breakpoint(desktop) {
+        gap: vw($size-dashboard-gap);
+    }
+
+    header {
+        z-index: 1;
+    }
+
+    &__inner {
+        @include flex(column, flex-start, flex-start);
+        width: 100%;
+        height: 100%;
+        position: relative;
+
+        @include breakpoint(desktop) {
+            gap: vw($size-dashboard-gap);
+        }
+    }
+}

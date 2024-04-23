@@ -1,0 +1,42 @@
+@import 'mixins';
+
+.container {
+    --color: var(--color-text);
+
+    padding-inline: 1em;
+    color: var(--color);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0.5em;
+}
+
+.item {
+    grid-row: 1;
+    justify-self: end;
+}
+
+.count {
+    @include font-size(18, 25);
+    letter-spacing: vw(-0.5);
+    font-weight: 700;
+    transition: opacity 150ms linear;
+}
+
+.type {
+    margin-left: vw(4.5);
+    @include font-size(10, 1);
+    font-weight: 400;
+}
+
+.is-loading {
+    opacity: 0.3;
+    // @include font-size(12, 25);
+}
+
+.loading {
+    @include font-size(18, 25);
+    font-weight: 600;
+    text-align: end;
+    padding-inline: 1em;
+}

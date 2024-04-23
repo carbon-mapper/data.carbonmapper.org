@@ -1,0 +1,57 @@
+@import 'mixins';
+
+// todo tidy up
+
+.inner {
+    @include flex(row, space-evenly, center);
+    gap: 1em;
+    padding: 0.75em 1em;
+
+    label {
+        @include flex;
+        margin-right: auto;
+        @include font-size(14, 15);
+        font-weight: 400;
+
+        a {
+            color: var(--color-accent-blue);
+        }
+
+        span + a {
+            margin-left: 0.5em;
+        }
+
+        svg {
+            margin-right: 1em;
+
+            path {
+                opacity: 0;
+                transition: opacity var(--transition-fast);
+            }
+
+            rect {
+                transition: stroke var(--transition-fast);
+            }
+        }
+
+        input {
+            &:checked + svg path {
+                opacity: 1;
+            }
+            @include focus {
+                + svg {
+                    rect {
+                        stroke: var(--color-yellow-a11y);
+                        stroke-width: 2px;
+                    }
+                }
+            }
+        }
+
+        @include hover {
+            svg rect {
+                stroke: var(--color-grey);
+            }
+        }
+    }
+}

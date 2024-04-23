@@ -1,0 +1,23 @@
+@import 'mixins';
+@import 'helpers';
+
+.wrapper {
+    width: 100%;
+    position: relative;
+    background-color: var(--color-white-blur);
+    flex: 1;
+    will-change: backdrop-filter;
+    padding: vw($size-dashboard-sources-padding);
+    border-radius: 0 0 vw($border-radius) vw($border-radius);
+    pointer-events: all;
+}
+
+.empty {
+    max-width: 20ch;
+    margin: auto;
+}
+
+.list {
+    height: '100%';
+    @extend %no-scrollbar;
+}

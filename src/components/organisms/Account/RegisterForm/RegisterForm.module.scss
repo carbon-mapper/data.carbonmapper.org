@@ -1,0 +1,40 @@
+@import 'mixins';
+
+.form {
+    grid-area: main;
+
+    fieldset {
+        display: grid;
+        grid-template-columns: repeat(2, 162px);
+        grid-template-rows: repeat(7, auto);
+        grid-template-areas:
+            'email email'
+            'first last'
+            'organization title'
+            'industry industry'
+            'notes notes'
+            'password confirm'
+            'legalCopy legalCopy'
+            '. submit';
+        gap: 0 1em;
+        transition: 2000ms;
+    }
+}
+
+.legalCopy {
+    @include font-size(13, 1);
+    grid-area: legalCopy;
+    color: var(--color-grey);
+    text-align: end;
+
+    a {
+        color: revert;
+    }
+}
+
+.submit {
+    margin-top: 0.5em;
+    grid-area: submit;
+    justify-self: end;
+    width: fit-content;
+}

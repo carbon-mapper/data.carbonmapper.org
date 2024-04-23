@@ -1,0 +1,99 @@
+@import 'mixins';
+@import 'variables/easings';
+
+$size-range-height: 10;
+$size-range-radius: 12;
+
+.wrapper {
+    @include flex(column, flex-start, flex-start);
+    width: 100%;
+    margin-bottom: vw(26);
+    gap: vw(10);
+
+    @include hover {
+        :global {
+            .thumb {
+                background-color: var(--color-blue-dark);
+            }
+        }
+    }
+}
+
+.range {
+    width: 100%;
+    padding: 0 vw($size-range-height / 2);
+}
+
+.bar,
+.thumb,
+.track {
+    height: vw($size-range-height);
+    @include breakpoint(desktop);
+}
+
+.bar {
+    width: 100%;
+    display: flex;
+    background-color: var(--color-white-smoke);
+    cursor: pointer !important;
+    border-radius: vw($size-range-radius);
+
+    &:global {
+        &[style*='cursor: grabbing;'] {
+            .thumb {
+                background-color: var(--color-blue-dark);
+            }
+        }
+    }
+}
+
+.thumb {
+    background-color: var(--color-accent-blue);
+    outline: none;
+    transition: background-color var(--transition-fast);
+
+    @include breakpoint(desktop) {
+        width: vw($size-range-height);
+
+        &:global {
+            &.is-first {
+                border-radius: vw($size-range-radius);
+            }
+
+            &.is-second {
+                border-radius: vw($size-range-radius);
+            }
+        }
+    }
+}
+
+.track {
+    align-self: center;
+    width: 100%;
+}
+
+.labels {
+    @include flex(row, space-between, center);
+    width: 100%;
+    font-family: var(--font-primary);
+    position: relative;
+
+    span {
+        font-weight: 400;
+        color: var(--color-grey-french);
+    }
+
+    strong {
+        font-weight: 500;
+        color: var(--color-black);
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        width: fit-content;
+    }
+
+    @include breakpoint(desktop) {
+        @include font-size(12, 1);
+        letter-spacing: -0.013px;
+    }
+}

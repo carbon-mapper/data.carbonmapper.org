@@ -1,0 +1,59 @@
+@import 'mixins';
+@import 'variables/easings';
+
+.container {
+    @include font-size(11, 25);
+    font-weight: 500;
+    display: grid;
+    align-items: center;
+    border-top: var(--border-light);
+    margin-top: 1em;
+    padding-top: 1em;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas: 'sorting . null-detects';
+    user-select: none;
+
+    .info {
+        color: var(--color-grey);
+    }
+
+    .null-detects {
+        @include flex;
+        color: var(--color-accent-blue);
+        padding-bottom: 0.5em;
+
+        svg {
+            margin-left: vw(6);
+            transform: translateY(-1px);
+
+            path {
+                opacity: 0;
+                transition: opacity var(--transition-fast);
+            }
+
+            rect {
+                transition: stroke var(--transition-fast);
+            }
+        }
+
+        input {
+            &:checked + svg path {
+                opacity: 1;
+            }
+            @include focus {
+                + svg {
+                    rect {
+                        stroke: var(--color-yellow-a11y);
+                        stroke-width: 2px;
+                    }
+                }
+            }
+        }
+
+        @include hover {
+            svg rect {
+                stroke: var(--color-grey);
+            }
+        }
+    }
+}

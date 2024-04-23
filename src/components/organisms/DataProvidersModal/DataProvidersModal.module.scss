@@ -1,0 +1,44 @@
+@import 'mixins';
+@import 'variables/easings';
+
+.container {
+    @include flex(column, center, flex-start);
+    gap: 1em;
+
+    .wrapper {
+        padding: 0 1rem 1rem;
+        @include font-size(12, 25);
+        font-weight: 500;
+    }
+
+    a {
+        color: var(--color-accent-blue);
+        position: relative;
+        display: block;
+        width: fit-content;
+        transition: color var(--transition-fast), var(--transition-fast);
+        transition-timing-function: $ease-custom;
+
+        :global .svg-hyperlink {
+            margin-left: 0.33em;
+
+            path {
+                fill: currentColor;
+            }
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0.2em;
+            height: 1px;
+            background-color: var(--color-accent-blue);
+        }
+
+        &:hover {
+            color: var(--color-blue-dark);
+        }
+    }
+}

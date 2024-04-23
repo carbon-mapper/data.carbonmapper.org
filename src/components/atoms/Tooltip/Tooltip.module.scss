@@ -1,0 +1,124 @@
+@import 'mixins';
+@import 'variables/easings';
+
+$icon-offset: 5;
+$tooltip-transform-offset: 5;
+
+%triangle {
+    --color: var(--color-background);
+    --size: #{vw(6)};
+
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: var(--size) calc(var(--size) * 1.725) var(--size) 0;
+    border-color: transparent var(--color) transparent transparent;
+}
+
+.triangle {
+    @extend %triangle;
+    position: absolute;
+
+    .tooltip:global(.is-left) & {
+        right: vw(-6);
+        transform: rotate(180deg);
+    }
+
+    .tooltip:global(.is-right) & {
+        left: vw(-6);
+    }
+
+    .tooltip:global(.is-top) & {
+        bottom: vw(-6);
+        transform: rotate(-90deg);
+    }
+
+    .tooltip:global(.is-bottom) & {
+        top: vw(-6);
+        transform: rotate(90deg);
+    }
+}
+
+.tooltip {
+    --color-background: var(--color-accent-blue);
+    --color-text: var(--color-white);
+
+    @include flex(column, flex-start, center);
+    font-weight: 400;
+    color: var(--color-text);
+    position: absolute;
+    width: fit-content;
+    height: fit-content;
+    pointer-events: none;
+    opacity: 0;
+    // transition: opacity var(--transition-fast-delay), transform var(--transition-fast-delay);
+    z-index: 999;
+
+    &.statistics {
+        .inner {
+            background-color: var(--color-current-sector);
+            padding: vw(7) vw(8) vw(6);
+        }
+        .triangle {
+            --color: var(--color-current-sector);
+        }
+    }
+
+    &:global {
+        &.is-top,
+        &.is-bottom {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        &.is-left,
+        &.is-right {
+            flex-direction: row;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+        &.is-bottom {
+            inset: 100% 0 auto;
+            margin-top: vw(4);
+            flex-direction: column-reverse;
+            transform: translateY(vw($tooltip-transform-offset));
+        }
+
+        &.is-top {
+            inset: auto auto 100% 50%;
+            transform: translateX(-50%);
+            margin-bottom: vw(4);
+        }
+
+        &.is-left {
+            inset: 0 100% 0 auto;
+            transform: translateX(vw(-$tooltip-transform-offset));
+        }
+
+        &.is-right {
+            flex-direction: row-reverse;
+            inset: 0 auto 0 100%;
+            transform: translateX(vw($tooltip-transform-offset));
+        }
+    }
+}
+
+.inner {
+    @include flex(column, flex-start, center);
+    background-color: var(--color-background);
+    font-weight: 400;
+    color: var(--color-text);
+    font-style: normal;
+    max-width: 100%;
+    overflow: hidden;
+    @include font-size(12, 1.25);
+    padding: vw(10) vw(12);
+    border-radius: vw($border-radius);
+
+    &:global {
+        &.is-inline {
+            white-space: nowrap;
+        }
+    }
+}

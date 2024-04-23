@@ -1,0 +1,21 @@
+@import 'mixins';
+
+.button {
+    --color: var(--color-grey-medium);
+
+    display: inline-block;
+    padding: vw(20);
+    @include font-size(18, 25);
+    letter-spacing: vw(-0.5);
+    text-transform: capitalize;
+    font-weight: 700;
+    color: var(--color);
+
+    &.is-active {
+        --color: var(--color-black);
+    }
+
+    @include hover {
+        --color: var(--color-accent-blue);
+    }
+}

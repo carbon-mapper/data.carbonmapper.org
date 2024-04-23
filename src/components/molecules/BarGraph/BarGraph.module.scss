@@ -1,0 +1,168 @@
+@import 'mixins';
+@import 'variables/easings';
+@import 'variables/colors';
+
+.container {
+    --color-oil: #{$color-oil};
+    --color-solid: #{$color-solid};
+    --color-water: #{$color-water};
+    --color-livestock: #{$color-livestock};
+    --color-coal: #{$color-coal};
+    --color-electricity: #{$color-electricity};
+    --color-other: #{$color-other};
+    --color-undetermined: #{$color-undetermined};
+
+    grid-area: graph;
+    margin-bottom: 1em;
+
+    :global {
+        .oil {
+            background-color: var(--color-oil);
+            --color-current-sector: var(--color-oil);
+        }
+
+        .solid {
+            background-color: var(--color-solid);
+            --color-current-sector: var(--color-solid);
+        }
+
+        .water {
+            background-color: var(--color-water);
+            --color-current-sector: var(--color-water);
+        }
+
+        .livestock {
+            background-color: var(--color-livestock);
+            --color-current-sector: var(--color-livestock);
+        }
+
+        .coal {
+            background-color: var(--color-coal);
+            --color-current-sector: var(--color-coal);
+        }
+
+        .electricity {
+            background-color: var(--color-electricity);
+            --color-current-sector: var(--color-electricity);
+        }
+
+        .other {
+            background-color: var(--color-other);
+            --color-current-sector: var(--color-other);
+        }
+
+        .undetermined {
+            background-color: var(--color-undetermined);
+            --color-current-sector: var(--color-undetermined);
+        }
+    }
+}
+
+.label {
+    font-weight: 400;
+    color: var(--color-grey-medium);
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: calc(100% - 3px);
+        height: 50%;
+        border: 1px solid currentColor;
+        border-radius: 0px 0px 4px 4px;
+        border-top: none;
+        clip-path: polygon(
+            0% 0%,
+            0% 100%,
+            32% 100%,
+            32% 67%,
+            67% 67%,
+            67% 100%,
+            24% 100%,
+            32% 100%,
+            100% 100%,
+            100% 0%
+        );
+    }
+
+    @include breakpoint(desktop) {
+        @include font-size(10, 1);
+        letter-spacing: vw(1);
+    }
+}
+
+.graph {
+    @include flex;
+    position: relative;
+    // overflow: hidden;
+    background-color: var(--color-grey-light);
+
+    @include breakpoint(desktop) {
+        margin-block: vw($size-spacing-m);
+        border-radius: var(--border-radius);
+        height: vw(37);
+    }
+
+    div {
+        flex: 1;
+        height: 100%;
+        transition: flex 666ms ease-in-out 333ms;
+        will-change: flex;
+    }
+
+    div.hasWidth + div {
+        margin-inline-start: 1px;
+    }
+}
+
+.item {
+    position: relative;
+    --color: red;
+
+    &:hover :global .tooltip {
+        opacity: 1;
+    }
+
+    &:global.isHovered :global .tooltip {
+        opacity: 1;
+    }
+
+    &.isActive :global .tooltip {
+        opacity: 1;
+    }
+}
+
+.legend {
+    @include flex(row, flex-start, flex-start);
+    flex-wrap: wrap;
+    gap: 0.33em 1em;
+    margin-top: 0.66em;
+}
+
+.note {
+    @include flex;
+    position: absolute;
+    inset: 0;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: var(--color-grey);
+    pointer-events: none;
+
+    @include breakpoint(desktop) {
+        @include font-size(9, 1);
+        letter-spacing: vw(1);
+    }
+
+    span {
+        opacity: 0;
+        transition: opacity 666ms linear 333ms;
+    }
+
+    &.noData span {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,112 @@
+@import 'mixins';
+@import 'variables/sizes';
+@import 'variables/easings';
+
+$modal-width-sizes: (
+    xs: 340,
+    s: 420,
+    m: 495,
+    l: 505,
+    xl: 605,
+    xxl: 870
+);
+
+.wrapper {
+    position: absolute;
+    inset: 0;
+    @include flex(row, center, center);
+    pointer-events: auto;
+
+    &:global {
+        &.is-dark-bg {
+            background-color: var(--color-grey-alpha);
+        }
+    }
+
+    &.is-right {
+        @include flex(row, flex-end, center);
+    }
+
+    &.full-screen {
+        @include flex(row, center, stretch);
+        padding: var(--size-spacing-l);
+
+        .modal {
+            flex: 1 0;
+        }
+    }
+
+    //
+
+    &.fullscreen {
+        padding: var(--size-spacing-l);
+    }
+
+    // &.is-left {
+    //     padding: var(--size-spacing-l);
+
+    //     .modal {
+    //         margin-right: auto;
+    //         margin-left: vw($size-dashboard-spacing);
+    //     }
+    // }
+}
+
+.modal {
+    @include flex(column, flex-start, stretch);
+    background-color: var(--color-white);
+    border-radius: var(--border-radius);
+    position: relative;
+
+    &:global {
+        @each $key, $val in $modal-width-sizes {
+            &.is-#{$key}-size {
+                width: vw($val);
+            }
+        }
+    }
+}
+
+.title {
+    width: 100%;
+    padding: $modal-padding $modal-padding $modal-padding * 0.8;
+    @include flex(row, space-between, center);
+    border-bottom: var(--border-light);
+    @include font-size(18, 1);
+    font-weight: 700;
+    letter-spacing: vw(-0.5);
+
+    span {
+        @include flex;
+    }
+
+    svg path {
+        stroke: var(--color-black);
+        stroke-width: 1.5;
+    }
+}
+
+.inner {
+    overflow-y: scroll;
+    flex: 1 0;
+}
+
+.closer {
+    position: absolute;
+    inset: 0 0 auto auto;
+    width: fit-content;
+    height: fit-content;
+    padding: vw(4);
+    z-index: 0;
+
+    // todo: check this
+    :global .svg-closer-big {
+        width: vw(16);
+        height: vw(16);
+    }
+
+    svg path {
+        stroke: var(--color-black);
+        stroke-width: 1.5;
+    }
+}

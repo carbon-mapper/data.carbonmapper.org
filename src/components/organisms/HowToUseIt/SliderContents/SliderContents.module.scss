@@ -1,0 +1,37 @@
+@import 'mixins';
+
+.index {
+    background-color: var(--color-accent-blue);
+    width: vw(18);
+    height: vw(18);
+    @include flex;
+    @include font-size(12, 1);
+    color: var(--color-white);
+    font-weight: 600;
+    border-radius: 50%;
+    justify-self: center;
+}
+
+.media {
+    grid-area: content;
+    position: relative;
+    background-color: var(--color-grey-bright);
+    @include flex(column, center, center);
+    padding: vw(40);
+
+    img,
+    video {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+}
+
+.caption {
+    @include flex(column, flex-start, center);
+    gap: 1.25em;
+    @include font-size(15, 18);
+    grid-area: caption;
+    font-weight: 400;
+    margin-bottom: 1em;
+}

@@ -1,0 +1,17 @@
+.divider {
+    background-color: var(--color-grey-light);
+
+    &.vertical {
+        width: 1px;
+        height: 100%;
+    }
+
+    &.horizontal {
+        width: 100%;
+        height: 1px;
+    }
+
+    &.gridChild {
+        grid-area: divider;
+    }
+}

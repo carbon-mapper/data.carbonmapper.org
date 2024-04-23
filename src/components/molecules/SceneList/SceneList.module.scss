@@ -1,0 +1,124 @@
+@import 'mixins';
+@import 'helpers';
+@import 'variables/easings';
+
+.container {
+    position: absolute;
+    left: calc(var(--size-button) + var(--size-spacing-sm));
+    top: var(--size-spacing-sm);
+    margin-right: auto;
+    width: var(--size-dashboard-filters-width);
+    border-radius: var(--border-radius);
+    background-color: var(--color-white-blur);
+    backdrop-filter: blur(var(--blur));
+    padding-inline: 1em;
+    pointer-events: all;
+    padding-bottom: 0.5em;
+}
+
+.header {
+}
+
+.top {
+    border-bottom: var(--border-light);
+    height: vw(43);
+    @include flex(row, space-between, center);
+    @include font-size(18, 25);
+
+    :global(.tooltip-info) {
+        margin-left: 0.5em;
+        margin-right: auto;
+    }
+}
+
+.closer {
+    width: vw(18);
+    height: vw(32);
+    @include flex;
+
+    svg {
+        width: vw(18);
+        height: vw(18);
+
+        path {
+            stroke: currentColor;
+        }
+    }
+
+    @include hover {
+        svg {
+            transform: rotate(90deg);
+        }
+    }
+}
+
+.middle {
+    padding-block: 0.8em;
+    border-bottom: var(--border-light);
+    @include flex(row, space-between, center);
+    @include font-size(12, 13);
+    font-weight: 400;
+}
+
+.bottom {
+    padding-block: 0.8em;
+    border-bottom: var(--border-light);
+    @include flex(row, space-between, center);
+}
+
+.statistics {
+    .type {
+        color: var(--color-grey);
+    }
+
+    .count {
+        margin-left: 0.25em;
+    }
+
+    .count + .type {
+        margin-left: 1em;
+    }
+}
+
+// .item {
+// }
+
+.table {
+    position: relative;
+    display: block;
+    // padding-top: 1.5em;
+    @include font-size(12, 1.4);
+    font-weight: 400;
+    color: var(--color-grey);
+
+    tbody {
+        display: block;
+        padding-top: 1em;
+        // max-height: 22.75em;
+        max-height: calc(50vh - #{vw(109)});
+        overflow: scroll;
+        @extend %no-scrollbar;
+    }
+
+    tr {
+        display: grid;
+        grid-template-columns:  4.5ch 3ch 19ch 4.5ch 8ch;
+    }
+
+    thead {
+        font-weight: 700;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1.5em;
+    }
+
+    td:last-of-type {
+        text-align: right;
+    }
+}
+
+.uppercase {
+    text-transform: uppercase;
+}

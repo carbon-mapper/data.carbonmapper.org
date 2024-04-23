@@ -1,0 +1,42 @@
+@import 'mixins';
+@import 'variables/easings';
+
+.button {
+    --color: var(--color-accent-blue);
+
+    @include font-size(11, 1);
+    font-weight: 500;
+    text-align: left;
+    color: var(--color);
+    transition: color var(--transition-fast);
+
+    &:first-of-type {
+        grid-column: 1 / span 2;
+    }
+    &:last-of-type {
+        grid-column: 3 / span 1;
+    }
+
+    svg {
+        opacity: 0;
+        margin-bottom: 0.05em;
+        margin-left: 0.5em;
+        transition: transform 333ms $ease-in-out, opacity 333ms linear;
+
+        path {
+            stroke: var(--color);
+        }
+    }
+
+    &.active svg {
+        opacity: 1;
+    }
+
+    &.up svg {
+        transform: rotate(180deg);
+    }
+
+    @include hover {
+        --color: var(--color-blue-dark);
+    }
+}

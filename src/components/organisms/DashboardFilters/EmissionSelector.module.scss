@@ -1,0 +1,8 @@
+@import 'mixins';
+
+.selector {
+    @include font-size(12, 1);
+    --color: var(--color-text);
+    --color-active: var(--color-text);
+    --color-hover: var(--color-text);
+}

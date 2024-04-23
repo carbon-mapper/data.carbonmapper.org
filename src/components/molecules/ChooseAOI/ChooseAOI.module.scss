@@ -1,0 +1,54 @@
+@import 'mixins';
+
+.container {
+    padding: vw(25) vw(50) vw(35);
+}
+
+.list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: vw(10);
+    align-items: center;
+    justify-items: center;
+}
+
+.item {
+    width: 100%;
+    border: var(--border-light);
+    border-radius: var(--border-radius);
+    @include font-size(12, 13);
+    font-weight: 500;
+    transition: border var(--transition-fast);
+
+    @include hover {
+        border: none;
+        color: var(--color-white);
+
+        button {
+            background-color: var(--color-accent-blue);
+
+            svg {
+                filter: invert(1);
+            }
+        }
+    }
+
+    button {
+        width: 100%;
+        padding: 1em 0.5em 0.75em;
+        transition: background-color var(--transition-fast);
+    }
+
+    svg {
+        margin-bottom: 0.25em;
+    }
+
+    input {
+        width: 0;
+        height: 0;
+        opacity: 0;
+        min-height: 0;
+        display: none;
+    }
+}

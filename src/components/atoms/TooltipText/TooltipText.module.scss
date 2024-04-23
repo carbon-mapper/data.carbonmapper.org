@@ -1,0 +1,29 @@
+@import "mixins";
+
+.wrapper {
+    @include flex(row, flex-start, center);
+    position: relative;
+    width: fit-content;
+}
+
+.text {
+    font-family: var(--font-primary);
+    font-weight: 400;
+    color: var(--color-black);
+
+    @include breakpoint(desktop) {
+        @include font-size(12, 1);
+        letter-spacing: 0.013px;
+    }
+
+    &:global {
+
+        &.is-tiny {
+
+            @include breakpoint(desktop) {
+                @include font-size(10, 1);
+                letter-spacing: normal;
+            }
+        }
+    }
+}

@@ -1,0 +1,40 @@
+@import 'mixins';
+
+.container {
+    --background-color: var(--color-white-blur);
+
+    p {
+        @include font-size(10, 1);
+        font-weight: 400;
+        color: var(--color-text);
+        text-align: center;
+    }
+}
+
+.main {
+    @include flex(column, center, center);
+    gap: 0.5em;
+    padding: 0.5em 0;
+    background-color: var(--background-color);
+    backdrop-filter: blur(var(--blur));
+
+    @include breakpoint(desktop) {
+        width: vw($size-button);
+    }
+}
+
+.unit {
+    padding: 0.25em 0;
+    background-color: var(--background-color);
+    border-radius: var(--border-radius);
+
+    @include breakpoint(desktop) {
+        margin-top: vw($size-spacing-s);
+    }
+
+    p {
+        @include breakpoint(desktop) {
+            letter-spacing: vw(0.1);
+        }
+    }
+}

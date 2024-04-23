@@ -1,0 +1,32 @@
+@import 'mixins';
+@import 'variables/sizes';
+@import 'variables/easings';
+
+.gradient {
+    position: absolute;
+    inset: 100% 0 auto auto;
+    width: 100%;
+    display: block;
+    background: var(--gradient-violet-orange);
+    transition: width var(--transition);
+    will-change: width;
+
+    @each $bp in desktop, tablet, phone {
+        @include breakpoint($bp) {
+            height: vw($size-logo-gradient, $bp);
+        }
+    }
+
+    &.is-extended {
+        width: vw($size-dashboard-details-view-width);
+    }
+
+    &.is-full-width {
+        position: absolute;
+        inset: initial;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: vw(8);
+    }
+}

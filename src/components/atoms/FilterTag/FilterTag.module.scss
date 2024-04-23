@@ -1,0 +1,38 @@
+@import 'mixins';
+@import 'variables/easings';
+
+.container {
+    --color: var(--color-grey);
+    --color-background: var(--color-grey-bright);
+
+    @include flex(row, center, center);
+    flex-shrink: 0;
+    font-weight: 500;
+    gap: vw(6);
+    color: var(--color);
+    background-color: var(--color-background);
+    border-radius: var(--border-radius);
+    transition: background-color 350ms 150ms linear;
+
+    @include breakpoint(desktop) {
+        @include font-size(12, 1);
+        padding: vw(6);
+    }
+
+    @include hover {
+        --color-background: var(--color-grey-light);
+
+        svg {
+            transform: rotate(90deg);
+        }
+    }
+
+    :global(.is-accessibility) & {
+        background-color: transparent;
+    }
+
+    svg {
+        will-change: transform;
+        transition: transform 350ms 150ms $ease-custom;
+    }
+}

@@ -1,0 +1,52 @@
+@import "mixins";
+
+.wrapper {
+    @include flex(column, center, center);
+    text-align: center;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+
+    h4 {
+        font-weight: 700;
+        color: var(--color-black);
+    }
+
+    p {
+        font-weight: 400;
+        color: var(--color-grey);
+    }
+
+    @include breakpoint(desktop) {
+        gap: vw(16);
+        padding: vw(16);
+
+        h4 {
+            @include font-size(20, 22);
+        }
+
+        p {
+            @include font-size(18, 20);
+        }
+    }
+
+    &:global {
+
+        &.is-tiny {
+
+            @include breakpoint(desktop) {
+                gap: vw(12);
+
+                h4 {
+                    @include font-size(16, 18);
+                }
+
+                p {
+                    @include font-size(12, 14);
+                }
+            }
+        }
+    }
+}
+

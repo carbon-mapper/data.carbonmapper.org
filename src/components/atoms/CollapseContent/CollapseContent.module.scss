@@ -1,0 +1,42 @@
+@import 'mixins';
+@import 'variables/easings';
+
+.header {
+    --color: var(--color-grey-medium);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.5em 1em;
+    background-color: var(--color-grey-light);
+
+    @include hover {
+        --color: var(--color-accent-blue);
+    }
+
+    svg {
+        transition: transform 250ms $ease-custom;
+        transform: rotate(90deg);
+
+        path {
+            stroke: var(--color);
+        }
+    }
+
+    &.isCollapsed {
+        svg {
+            transform: rotate(0deg);
+        }
+    }
+}
+
+.content {
+    margin-top: 0.25em;
+    transition: max-height 500ms $ease-custom;
+    overflow: hidden;
+
+    &.isCollapsed {
+        max-height: 0;
+    }
+}

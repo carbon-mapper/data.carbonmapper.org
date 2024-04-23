@@ -1,0 +1,66 @@
+@import 'mixins';
+@import 'variables/easings';
+@import 'variables/zindex';
+
+.wrapper {
+    @include z-index(list, $dashboard-elements);
+    @include flex(column, flex-start, flex-start);
+    position: absolute;
+    will-change: backdrop-filter;
+    width: vw(323);
+    overflow: hidden;
+    inset: vw(4) vw($size-button + 4) 0 auto;
+    backdrop-filter: blur(20px);
+    height: calc(
+        100vh - #{vw(60 + $size-dashboard-header-height)} - #{vw($size-dashboard-header-height)} - #{vw(6)} - #{vw(
+                $size-dashboard-gap
+            )}
+    );
+    pointer-events: all;
+}
+
+.header {
+    @include flex(row, space-between, center);
+    width: 100%;
+    color: var(--color-black);
+    font-weight: 700;
+    background-color: var(--color-white);
+    @include font-size(15, 1);
+    border-radius: vw($border-radius) vw($border-radius) 0 0;
+    padding-left: vw($size-dashboard-sources-padding);
+    height: vw(43);
+}
+
+.filters {
+    display: flex;
+    width: 100%;
+    background-color: var(--color-white-blur);
+    padding: vw($size-dashboard-sources-padding);
+    padding-bottom: 0;
+    @include font-size(11, 1);
+}
+
+.closer {
+    @include hover {
+        svg {
+            transform: rotate(-90deg);
+        }
+    }
+
+    @include focus {
+        outline: none;
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            width: -webkit-fill-available;
+            height: -webkit-fill-available;
+            border: 2px solid var(--color-yellow-a11y);
+        }
+    }
+}

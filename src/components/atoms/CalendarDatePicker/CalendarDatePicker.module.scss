@@ -1,0 +1,212 @@
+@import "mixins";
+
+.wrapper {
+    @include flex(column, center, center);
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+
+    &:not(:last-of-type) {
+        border-bottom: var(--border-bright);
+    }
+
+    @include breakpoint(desktop) {
+        padding: vw(15) vw(30);
+    }
+
+    *:disabled {
+        color: var(--color-grey-french)
+    }
+
+
+    :global {
+
+        .react-calendar {
+            width: 100%;
+            font-family: var(--font-primary);
+
+
+            &__navigation {
+                @include flex(row, space-between, center);
+
+                @include breakpoint(desktop) {
+                    padding: vw(12) 0;
+                }
+
+                &__label {
+                    font-weight: 700;
+                    color: var(--color-black);
+
+                    @include breakpoint(desktop) {
+                        @include font-size(15, 1);
+                    }
+                }
+
+                &__next2-button {
+                    display: none;
+                }
+
+                &__prev2-button {
+                    display: none;
+                }
+            }
+
+
+            &__tile {
+                font-weight: 400;
+                z-index: 0;
+                position: relative;
+
+                &:disabled {
+                    pointer-events: none;
+                }
+
+                &::before {
+                    content: "";
+                    margin: auto;
+                    position: absolute;
+                    inset: 0;
+                    background-color: var(--color-accent-blue);
+                    visibility: hidden;
+                    z-index: -1;
+                }
+
+                @include breakpoint(desktop) {
+                    @include font-size(12, 1);
+                    padding: vw(10) 0;
+
+                    &::before {
+                        border-radius: vw($border-radius);
+                    }
+                }
+
+                abbr {
+                    position: relative;
+                    z-index: 1;
+                }
+
+                @include hover {
+                    color: var(--color-white);
+
+                    &::before {
+                        visibility: visible;
+                    }
+                }
+
+                &--active {
+                    color: var(--color-white);
+
+                    &::before {
+                        visibility: visible;
+                    }
+                }
+            }
+
+            &__year {
+
+                &-view__months {
+
+
+                    &__month {
+
+                        @include breakpoint(desktop) {
+                            padding: vw(16) 0;
+                        }
+                    }
+                }
+            }
+
+            &__decade {
+
+                &-view {
+
+                    &__years {
+
+                        &__year {
+
+                            @include breakpoint(desktop) {
+                                padding: vw(16) 0;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &__month-view {
+
+                &__weekdays {
+                    font-weight: 400;
+                    color: var(--color-grey-french);
+                    text-align: center;
+
+                    @include breakpoint(desktop) {
+                        @include font-size(12, 1);
+                    }
+
+                    &__weekday {
+
+                        abbr {
+                            text-decoration: none;
+                        }
+
+                        @include breakpoint(desktop) {
+                            padding: vw(8);
+                        }
+                    }
+                }
+
+                &__days {
+
+                    &__day {
+
+                        &::before {
+
+                            @include breakpoint(desktop) {
+                                width: vw(32);
+                                height: vw(32);
+                                max-width: 100%;
+                                max-height: 100%;
+                            }
+                        }
+
+                        &--neighboringMonth {
+                            color: var(--color-grey-french);
+
+                            &.react-calendar__tile--active {
+                                color: var(--color-white);
+                            }
+                        }
+                    }
+                }
+
+            }
+
+        }
+    }
+}
+
+.label {
+    @include font-size(12, 12);
+    color: var(--color-grey-french);
+}
+
+.button {
+
+    &:global {
+
+        &.is-prev {
+
+            svg {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    @include hover {
+        :global {
+            svg path {
+                stroke: var(--color-accent-blue);
+            }
+        }
+    }
+}

@@ -1,0 +1,8 @@
+@import "mixins";
+
+.wrapper {
+
+    @include breakpoint(desktop) {
+        padding: vw(16) vw(20);
+    }
+}

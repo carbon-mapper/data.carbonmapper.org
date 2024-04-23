@@ -1,0 +1,138 @@
+@import 'mixins';
+@import 'variables/easings';
+
+.wrapper {
+    width: 100%;
+    height: fit-content;
+    position: relative;
+    color: var(--color-black);
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    pointer-events: all;
+    padding-bottom: vw($size-dashboard-sources-padding);
+
+    :global {
+        .skeleton {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 130px;
+
+            div {
+                height: 100%;
+            }
+        }
+    }
+
+    @include hover {
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: vw($size-dashboard-sources-padding);
+            border: 1px solid var(--color-accent-blue);
+        }
+    }
+}
+
+.inner {
+    display: grid;
+    grid-template-columns: vw(90) 1fr;
+    grid-template-areas: 'image content';
+    width: 100%;
+    pointer-events: none;
+    background-color: var(--color-white);
+}
+
+.button {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: all;
+
+    @include focus {
+        outline: none;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            width: -webkit-fill-available;
+            height: -webkit-fill-available;
+            border: 2px solid var(--color-yellow-a11y);
+        }
+    }
+}
+
+.image {
+    grid-area: image;
+    position: relative;
+}
+
+.content {
+    grid-area: content;
+    padding: vw(10);
+}
+
+.hiddenContent {
+    @include flex(column, flex-start, flex-start);
+    visibility: hidden;
+}
+
+.title {
+    @include font-size(12, 1);
+    font-weight: 600;
+    margin-bottom: vw(7);
+}
+
+.coords,
+.date {
+    color: var(--color-grey);
+    font-weight: 400;
+    @include font-size(10, 15);
+}
+
+.plumeCount {
+    color: var(--color-grey);
+    font-weight: 400;
+    @include font-size(10, 15);
+    margin-bottom: 0.5em;
+}
+
+.count {
+    padding: 0;
+    text-align: left;
+
+    * {
+        justify-content: flex-start;
+    }
+}
+
+.skeletonImage {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    opacity: 0.65;
+}
+
+.skeletonTextWrapper {
+    @include flex(column, flex-start, flex-start);
+    gap: vw(6);
+    width: 100%;
+    position: absolute;
+    inset: 0;
+    opacity: 0.65;
+
+    br {
+        display: none;
+    }
+}

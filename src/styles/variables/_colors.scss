@@ -1,0 +1,57 @@
+//// colors
+$color-transparent: rgba(0, 0, 0, 0);
+$color-white: #ffffff;
+$color-white-alpha-super-high: rgba($color-white, 0.8);
+$color-white-alpha-high: rgba($color-white, 0.65);
+$color-white-alpha: rgba($color-white, 0.5);
+$color-white-alpha-low: rgba($color-white, 0.24);
+$color-white-smoke: #f2f2f2;
+$color-white-blur: rgba($color-white, 0.45);
+$color-white-blur-medium: rgba($color-white, 0.8);
+$color-white-blur-high: rgba($color-white, 0.9);
+$color-black: #0b0b0b;
+$color-blue: #3e8cf0;
+$color-blue-dark: #1b62bc;
+$color-violet: #6b01b3;
+$color-hotpink: #d00a75;
+$color-violet-light: #a434f1;
+$color-orange: #fd9010;
+$color-red: #f34545;
+$color-green: #0c950c;
+$color-blue-a11y: #0026ff;
+$color-red-a11y: #ae1900;
+$color-grey-a11y: #84888b;
+$color-yellow-a11y: #8a6e00;
+
+// bar chart colors
+$color-oil: #efb319;
+$color-solid: #5b3939;
+$color-water: #587497;
+$color-livestock: #537b45;
+$color-coal: #c52e2e;
+$color-electricity: #954082;
+$color-other: #a6a6a6;
+$color-undetermined: #ee7734;
+
+$color-grey: #686d71;
+$color-grey-medium: #aaaeb2;
+$color-grey-light: #dedede80;
+$color-grey-bright: #f4f4f4;
+$color-grey-french: $color-grey-medium;
+$color-grey-french-active: #999ca0;
+$color-grey-french-alpha: rgba($color-grey-french, 0.3);
+$color-grey-alpha: rgba($color-grey, 0.35);
+
+$color-bg: $color-white;
+$color-text: $color-black;
+
+//// gradients
+$gradient-violet-orange: linear-gradient(90deg, $color-violet 0%, $color-orange 100%);
+$gradient-emission-level: linear-gradient(
+    180deg,
+    #3e88eb 0%,
+    #1bdbbb 32.81%,
+    #b1f239 65.1%,
+    #d2d339 83.33%,
+    #ff2f01 100%
+);

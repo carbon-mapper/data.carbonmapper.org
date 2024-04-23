@@ -1,0 +1,34 @@
+@import 'mixins';
+
+.button {
+    --border-style: 2px solid var(--color-grey-light);
+
+    position: relative;
+    border-radius: var(--border-radius);
+
+    @include breakpoint(desktop) {
+        width: vw(26);
+        height: vw(26);
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        transition: border-color 333ms linear;
+        border: var(--border-style);
+        border-radius: inherit;
+    }
+
+    img {
+        border-radius: inherit;
+    }
+
+    &.active {
+        --border-style: 2px solid var(--color-accent-blue);
+    }
+
+    @include hover {
+        --border-style: 2px solid var(--color-accent-blue);
+    }
+}

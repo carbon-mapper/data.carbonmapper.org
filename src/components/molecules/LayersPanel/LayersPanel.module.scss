@@ -1,0 +1,24 @@
+@import 'mixins';
+@import 'variables/easings';
+@import 'variables/zindex';
+@import 'variables/sizes';
+
+.container {
+    @include breakpoint(desktop) {
+        --spacing-extra-small: #{vw(1)};
+        --spacing-small: #{vw(3)};
+        --spacing-medium: #{vw(4)};
+        --spacing-large: #{vw(8)};
+        --border-radius: #{vw($border-radius)};
+        --offset: #{vw(43)};
+    }
+
+    @include flex;
+    gap: var(--spacing-small);
+    position: absolute;
+    right: var(--offset);
+    bottom: var(--offset);
+    margin-right: var(--spacing-small);
+    z-index: -1;
+    pointer-events: auto;
+}

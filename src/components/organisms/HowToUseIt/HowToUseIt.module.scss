@@ -1,0 +1,16 @@
+@import 'mixins';
+@import 'variables/sizes';
+@import 'variables/easings';
+
+.container {
+    padding: 1em;
+    height: 100%;
+    display: grid;
+    grid-template-columns: vw(315) auto 1fr;
+    grid-template-rows: 1fr auto;
+    grid-template-areas:
+        'menu divider content'
+        'caption divider content'
+        'controls divider content';
+    gap: 1em;
+}

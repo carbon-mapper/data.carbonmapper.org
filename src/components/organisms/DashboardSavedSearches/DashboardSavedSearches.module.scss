@@ -1,0 +1,57 @@
+@import 'mixins';
+@import 'variables/sizes';
+@import 'variables/zindex';
+@import 'helpers';
+
+.wrapper {
+    @include z-index(modal, $panel-elements);
+}
+
+.modal {
+    width: vw(605);
+    height: vw($size-dashboard-left-panel-max-height);
+    margin-left: calc(vw($size-dashboard-spacing) + vw(20));
+    margin-right: auto;
+    margin-top: vw(90);
+    margin-bottom: auto;
+    overflow: scroll;
+    @extend %no-scrollbar;
+}
+
+.list {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+
+    @include breakpoint(desktop) {
+        padding: vw(16);
+        gap: vw(8);
+    }
+}
+
+.form {
+    input {
+        text-decoration: none;
+    }
+
+    &:global {
+        &.is-edit-mode {
+            text-decoration: underline;
+        }
+    }
+}
+
+.info {
+    p {
+        max-width: 30ch;
+    }
+}
+
+.counter {
+    @include font-size(13, 14);
+    background-color: var(--color-accent-blue);
+    color: var(--color-white);
+    margin-inline: 0.5em;
+    padding: 0.125em 0.25em;
+    border-radius: var(--border-radius);
+}

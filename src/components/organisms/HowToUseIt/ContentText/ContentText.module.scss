@@ -1,0 +1,13 @@
+@import 'mixins';
+
+.section {
+    grid-area: content;
+    @include font-size(14, 17);
+    font-weight: 400;
+    width: 47ch;
+    margin-left: 1em;
+
+    p + p {
+        margin-top: 1.5em;
+    }
+}

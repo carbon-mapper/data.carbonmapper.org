@@ -1,0 +1,23 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Custom Shape"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [-20, 0],
+                        [-20, 20],
+                        [0, 20],
+                        [0, 0],
+                        [-20, 0]
+                    ]
+                ]
+            }
+        }
+    ]
+}

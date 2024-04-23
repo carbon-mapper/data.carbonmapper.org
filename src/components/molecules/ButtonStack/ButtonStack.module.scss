@@ -1,0 +1,24 @@
+@import 'mixins';
+
+.container {
+    --spacing: #{vw($size-spacing-m)};
+
+    &.is-open .list {
+        pointer-events: all;
+    }
+}
+
+.list {
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + var(--spacing));
+    @include flex(column, center, flex-end);
+    gap: var(--spacing);
+    pointer-events: none;
+button {
+        background-color: rgb(240 240 240 / 85%);
+    }
+}
+
+.item {
+}
