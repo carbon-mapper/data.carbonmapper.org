@@ -49,7 +49,7 @@
         "lodash.debounce": "^4.0.8",
         "mapbox-gl": "^2.15.0",
         "mapbox-gl-draw-rectangle-mode": "^1.0.4",
-        "next": "^13.5.6",
+        "next": "^14.1.1",
         "next-query-params": "^5.0.0",
         "query-string": "^8.2.0",
         "react": "18.2.0",
